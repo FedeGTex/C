@@ -60,4 +60,27 @@ int pantalla_init(Pantalla* arrayPantalla,int limite);
  */
  int pantalla_baja(Pantalla* arrayPantalla,int limite,int id);
 
+ /** \brief Da de alta pantallas sin necesidad del ingreso del usuario
+ * \param array Pantallas* array de pantalla
+ * \param limite int cantidad de elementos del array
+ * \param char* nombre
+ * \param char* direccion
+ * \param int tipo
+ * \param float precio
+ * \return Si devuelve un numero negativo no existe ese id sino devuelve el indice en donde esta ubicado ese id en el array
+ *
+ */
+
+ int pantalla_altaForzada(Pantalla* arrayPantalla,int limite,char* nombre,char* direccion,float precio,int tipo);
+
+
+ /** \brief Muestra un indice de pantalla
+ * \param arrayPantallas
+ * \param limite int cantidad de elementos del array
+ * \param indice
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+ int pantalla_mostrarUnIndice(Pantalla* arrayPantalla,int limite,int indice);
+
 #endif // PANTALLA_H_INCLUDED

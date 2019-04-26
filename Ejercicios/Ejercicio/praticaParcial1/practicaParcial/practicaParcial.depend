@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1556236663 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"pantalla.h"
+	"publicidad.h"
+	"utn.h"
+
+1556234509 /home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/pantalla.h
+
+1556228104 /home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/utn.h
+
+1556237542 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"pantalla.h"
+	"utn.h"
+
+1556228104 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
+1556236696 /home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/publicidad.h
+
+1556237470 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/praticaParcial1/practicaParcial/publicidad.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"pantalla.h"
+	"publicidad.h"
+	"utn.h"
+

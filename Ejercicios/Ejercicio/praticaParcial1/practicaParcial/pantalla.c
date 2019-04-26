@@ -37,12 +37,12 @@ int pantalla_mostrar(Pantalla* arrayPantalla,int limite)
             retorno=0;
             if(!arrayPantalla[i].isEmpty)
             {
-                printf("ID: %d \nNombre: %s \nDireccion: %s \nPrecio: %.2f \nTipo: %d",
-                                                            arrayPantalla[i].idPantalla,
-                                                            arrayPantalla[i].nombre,
-                                                            arrayPantalla[i].direccion,
-                                                            arrayPantalla[i].precio,
-                                                            arrayPantalla[i].tipo);
+                printf("\nID: %d Nombre: %s Direccion: %s Precio: %.2f Tipo: %d\n",
+                            arrayPantalla[i].idPantalla,
+                            arrayPantalla[i].nombre,
+                            arrayPantalla[i].direccion,
+                            arrayPantalla[i].precio,
+                            arrayPantalla[i].tipo);
             }
         }
     }
@@ -137,8 +137,8 @@ int pantalla_modificar(Pantalla* arrayPantalla,int limite,int id)
                                               "Ingrese 0 para LCD o 1 para LED",0,1))
                             {
                                 retorno=0;
-                                strncpy(arrayPantalla[indiceAModificar].nombre,auxNombre,50);
-                                strncpy(arrayPantalla[indiceAModificar].direccion,auxDireccion,50);
+                                strncpy(arrayPantalla[indiceAModificar].nombre,auxNombre,sizeof(arrayPantalla[indiceAModificar].nombre));
+                                strncpy(arrayPantalla[indiceAModificar].direccion,auxDireccion,sizeof(arrayPantalla[indiceAModificar].direccion));
                                 arrayPantalla[indiceAModificar].precio=auxPrecio;
                                 arrayPantalla[indiceAModificar].tipo=auxTipo;
 
@@ -167,6 +167,83 @@ int pantalla_baja(Pantalla* arrayPantalla,int limite,int id)
             retorno=0;
         }
     }
+    return retorno;
+}
+
+/*int pantalla_ordenar(Pantalla* arrayPantalla,int limite,int order)
+{
+    int retorno=-1;
+    int i;
+    int flagSwap;
+    Pantalla auxEstructura;
+    if(arrayPantalla!=NULL && limite>0)
+    {
+            flagSwap=0;
+            for(i=0;i<limite-1;i++)
+            {
+                if(!arrayPantalla[i].isEmpty && !arrayPantalla[i+1].isEmpty)
+                {
+                    if((strcmp(arrayPantalla[i].nombre,arrayPantalla[i+1].nombre) > 0 && orden) || (strcmp(arrayPantalla[i].nombre,arrayPantalla[i+1].nombre) < 0 && !orden))
+                    {
+                        auxEstructura = arrayPantalla[i];
+                        arrayPantalla[i] = arrayPantalla[i+1];
+                        arrayPantalla[i+1] = auxEstructura;
+                        flagSwap = 1;
+                    }
+                }
+            }
+        }while(flagSwap);
+    }
+    return retorno;
+
+    }
+}
+*/
+
+int pantalla_altaForzada(Pantalla* arrayPantalla,int limite,char* nombre,char* direccion,float precio,int tipo)
+{
+    int retorno = -1;
+    int i;
+
+    if(limite > 0 && arrayPantalla != NULL)
+    {
+        i = buscarLugarLibre(arrayPantalla,limite);
+        if(i >= 0)
+        {
+            retorno = 0;
+            strncpy(arrayPantalla[i].nombre,nombre,50);
+            strncpy(arrayPantalla[i].direccion,direccion,50);
+            arrayPantalla[i].precio=precio;
+            arrayPantalla[i].tipo=tipo;
+            //------------------------------
+            //------------------------------
+            arrayPantalla[i].idPantalla = proximoId();
+            arrayPantalla[i].isEmpty = 0;
+        }
+        retorno = 0;
+    }
+    return retorno;
+}
+
+
+
+int pantalla_mostrarUnIndice(Pantalla* arrayPantalla,int limite,int indice)
+{
+    int retorno=-1;
+    if(arrayPantalla != NULL && limite > 0)
+    {
+        if(arrayPantalla[indice].isEmpty==0)
+        {
+            printf("\n-El ID de la pantalla es: %d", arrayPantalla[indice].idPantalla);
+            printf("\n-El nombre de la pantalla es: %s",arrayPantalla[indice].nombre);
+            printf("\n-El tipo de la pantalla es(LCD:1, LED:0): %d ",arrayPantalla[indice].tipo);
+            printf("\n-El precio de la pantalla es: %.2f por dia",arrayPantalla[indice].precio);
+            printf("\n-La direccion de la pantalla es: %s\n",arrayPantalla[indice].direccion);
+            retorno=0;
+        }
+
+    }
+
     return retorno;
 }
 
