@@ -1,4 +1,5 @@
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <time.h>
 #include <string.h>
 #include "utn.h"
@@ -196,7 +197,7 @@ int musico_modificacion(Musico* arrayMusico,int limite, int id)
  * \param orden orden para arrayMusico(ascendente/descendente)
  * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
  *
- *
+ */
 int musico_ordenar(Musico* arrayMusico,int limite, int orden)
 {
     int retorno = -1;
@@ -226,7 +227,7 @@ int musico_ordenar(Musico* arrayMusico,int limite, int orden)
     }
     return retorno;
 }
-*/
+
 
 /** \brief Busca un lugar libre en el arrayMusico musicos
  * \param arrayMusico Musico* arrayMusico de musicos
@@ -331,14 +332,44 @@ int musico_bajaPorOrquesta(Musico* arrayMusico,int limite,int id)
 {
     int retorno=-1;
     int i;
+    int flagExiste=0;
 
     if(arrayMusico!=NULL && limite>0)
     {
-        i = musico_buscarPorId(arrayMusico,limite,id);
-        if(arrayMusico[i].idOrquesta==id)
+        for(i=0;i<limite;i++)
         {
-            arrayMusico[i].isEmpty=1;
-            retorno=0;
+            if(arrayMusico[i].idOrquesta==id)
+            {
+                arrayMusico[i].isEmpty=1;
+                flagExiste=1;
+                retorno=0;
+            }
+        }
+        if(flagExiste==0)
+        {
+            printf("\nNo hay musicos en esta orquesta\n");
+        }
+    }
+    return retorno;
+}
+
+int musicos_listarPorOrquesta(Musico* pMusico,int limite,int id)
+{
+    int retorno=-1;
+    int i;
+    Musico auxMusico;
+
+    if(pMusico!=NULL && limite>0)
+    {
+        printf("\nMUSICOS\n");
+        for(i=0;i<limite;i++)
+        {
+            if(pMusico[i].idOrquesta==id)
+            {
+                auxMusico=pMusico[i];
+                retorno=0;
+                printf("\nId: %d - nombre: %s - apellido: %s - edad: %d - id orquesta: %d\n",auxMusico.idMusico,auxMusico.nombre,auxMusico.apellido,auxMusico.edad,auxMusico.idOrquesta);
+            }
         }
     }
     return retorno;

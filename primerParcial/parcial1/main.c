@@ -1,5 +1,5 @@
-//#include <stdio.h>
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -7,6 +7,7 @@
 #include "orquesta.h"
 #include "musico.h"
 #include "instrumento.h"
+#include "informes.h"
 #define QTY_ORQUESTA 50
 #define QTY_MUSICO 20
 #define QTY_INSTRUMENTO 1000
@@ -18,6 +19,7 @@ int main()
     int menu;
     int auxiliarId;
     int respuesta;
+    //int auxTipo;
 
     Orquesta pOrquesta[QTY_ORQUESTA];
     Musico pMusico[QTY_MUSICO];
@@ -35,22 +37,23 @@ int main()
     orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Muda","Bernal",2);
 
     musico_altaForzada(pMusico,QTY_MUSICO,"Gonzalo","Perez",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Federico","Gonzalez",31,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Miriam","Martinez",33,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Romina","Gomez",40,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Ariel","Dominguez",18,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,1,1);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Federico","Gonzalez",31,2,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Miriam","Martinez",33,3,3);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Romina","Gomez",40,4,4);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Ariel","Dominguez",18,5,5);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,2,2);
 
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Trompeta",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Clarinete",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",1);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",4);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Arpa",1);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",2);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Trompeta",3);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Clarinete",3);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Bateria",4);
 
 
     do
     {
-        utn_getEntero(&menu,3,"\n1.Agregar orquesta\n2.Eliminar orquesta\n3.Imprimir orquesta\n4.Agregar musico\n5.Modificar musico\n6.Eliminar musico\n7.Imprimir musicos\n8.Agregar instrumento\n9.Imprimir instrumento\n10.Salir.\n","\nNo valida\n",1,10);
+        utn_getEntero(&menu,3,"\n1.Agregar orquesta\n2.Eliminar orquesta\n3.Imprimir orquesta\n4.Agregar musico\n5.Modificar musico\n6.Eliminar musico\n7.Imprimir musicos\n8.Agregar instrumento\n9.Imprimir instrumento\n10.Salir.\n","\nNo valida\n",1,31);
         switch(menu)
         {
             case 1:
@@ -59,7 +62,7 @@ int main()
             case 2:
                 orquesta_mostrar(pOrquesta,QTY_ORQUESTA);
                 utn_getEntero(&auxiliarId,3,"\nIngrese la id de la orquesta que desea eliminar\n","Ingrese una id valida!",1,50);
-                if(!utn_getEntero(&respuesta,2,"\nIngrese el numero de la opcion que desea realizar?\n\n1.Eliminar.\n2.No eliminar.\n","No es una opcion correcta\n",1,2))
+                if(!utn_getEntero(&respuesta,2,"\nDesea eliminar la orquesta junto con todos los musicos?\n\n1.Eliminar.\n2.No eliminar.\n","No es una opcion correcta\n",1,2))
                 {
                     if(respuesta==1)
                     {

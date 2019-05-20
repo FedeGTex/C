@@ -1,4 +1,5 @@
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -102,7 +103,6 @@ int orquesta_alta(Orquesta* array,int limite)
         {
             retorno = -2;
         }
-
     }
     return retorno;
 }
@@ -179,7 +179,7 @@ int orquesta_modificacion(Orquesta* array,int limite, int id)
  * \param orden orden para array(ascendente/descendente)
  * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
  *
- *
+ */
 int orquesta_ordenar(Orquesta* array,int limite, int orden)
 {
     int retorno = -1;
@@ -209,7 +209,7 @@ int orquesta_ordenar(Orquesta* array,int limite, int orden)
     }
     return retorno;
 }
-*/
+
 
 /** \brief Busca un lugar libre en el array orquestas
  * \param array Orquesta* array de orquestas
@@ -304,6 +304,27 @@ int orquesta_altaForzada(Orquesta* array,int limite,char* nombre,char* lugar,int
             array[i].isEmpty = 0;
         }
         retorno = 0;
+    }
+    return retorno;
+}
+
+
+
+int orquesta_imprimirPorId(Orquesta* pOrquesta,int limite,int id)
+{
+    int retorno=-1;
+    int indiceAImprimir;
+    Orquesta orquesta;
+    if(pOrquesta!=NULL && limite>0)
+    {
+        printf("\nORQUESTA\n");
+        indiceAImprimir=orquesta_buscarPorId(pOrquesta,limite,id);
+        if(indiceAImprimir>=0)
+        {
+            orquesta = pOrquesta[indiceAImprimir];
+            printf("\nID: %d - nombre: %s - lugar: %s - tipo: %d\n",orquesta.idOrquesta,orquesta.nombre,orquesta.lugar,orquesta.tipo);
+            retorno=0;
+        }
     }
     return retorno;
 }

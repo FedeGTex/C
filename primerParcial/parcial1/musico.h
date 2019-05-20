@@ -23,6 +23,6 @@ int musico_ordenar(Musico* arrayMusico,int limite, int orden);
 int musico_buscarPorId(Musico* arrayMusico,int limite, int id);
 int musico_altaForzada(Musico* arrayMusico,int limite,char* nombre,char* apellido,int edad,int idOrquesta,int idInstrumento);
 int musico_bajaPorOrquesta(Musico* arrayMusico,int limite,int id);
-
+int musicos_listarPorOrquesta(Musico* pMusico,int limite,int id);
 
 #endif // MUSICO_H_INCLUDED

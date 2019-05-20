@@ -1,4 +1,5 @@
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -44,6 +45,7 @@ int instrumento_mostrar(Instrumento* array,int limite)
     int retorno = -1;
     int i;
     int auxTipo;
+
     if(limite > 0 && array != NULL)
     {
         retorno = 0;
@@ -52,22 +54,24 @@ int instrumento_mostrar(Instrumento* array,int limite)
             if(!array[i].isEmpty)
             {
                 auxTipo=array[i].tipo;
+                //printf("Id: %d - Nombre: %s - tipo: %d\n",array[i].idInstrumento,array[i].nombre,auxTipo);
                 switch(auxTipo)
                 {
-                    printf("Id: %d - Nombre: %s - tipo: %d\n",array[i].idInstrumento,array[i].nombre,array[i].tipo);
+                    //printf("Id: %d - Nombre: %s - tipo: %d\n",array[i].idInstrumento,array[i].nombre,auxTipo);
                     case 1:
-                        printf("\nCuerda");
+                        printf("\nCuerda\n");
                         break;
                     case 2:
-                        printf("\nViento-madera");
+                        printf("\nViento-madera\n");
                         break;
                     case 3:
-                        printf("\nViento-metal");
+                        printf("\nViento-metal\n");
                         break;
                     case 4:
-                        printf("\nPercusion");
+                        printf("\nPercusion\n");
                         break;
                 }
+                printf("Id: %d - Nombre: %s - tipo: %d\n",array[i].idInstrumento,array[i].nombre,auxTipo);
             }
         }
     }
@@ -313,6 +317,28 @@ int instrumento_altaForzada(Instrumento* array,int limite,char* nombre,int tipo)
             array[i].isEmpty = 0;
         }
         retorno = 0;
+    }
+    return retorno;
+}
+
+
+int instrumento_imprimirTipoPorId(Instrumento* pInstrumento,int limite,int id)
+{
+    int retorno=1;
+    int i;
+
+    if(pInstrumento!=NULL && limite>0)
+    {
+        for(i=0;i<limite;i++)
+        {
+            i=instrumento_buscarPorId(pInstrumento,limite,id);
+            if(pInstrumento[i].idInstrumento==id)
+            {
+                retorno=0;
+                printf("\nEl tipo es: %d",pInstrumento[i].tipo);
+                break;
+            }
+        }
     }
     return retorno;
 }

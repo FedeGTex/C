@@ -19,5 +19,7 @@ int orquesta_ordenar(Orquesta* array,int limite, int orden);
 int orquesta_buscarPorId(Orquesta* array,int limite, int id);
 int orquesta_altaForzada(Orquesta* array,int limite,char* nombre,char* lugar,int tipo);
 
+int orquesta_imprimirPorId(Orquesta* pOrquesta,int limite,int id);
+
 
 #endif // ORQUESTA_H_INCLUDED
