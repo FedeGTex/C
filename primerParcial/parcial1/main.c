@@ -42,7 +42,19 @@ int main()
     musico_altaForzada(pMusico,QTY_MUSICO,"Romina","Gomez",40,4,4);
     musico_altaForzada(pMusico,QTY_MUSICO,"Ariel","Dominguez",18,5,5);
     musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,2,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Sergio","Az",22,1,1);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Carlos","Pe",31,2,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Jessica","Ka",33,3,3);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Sabrina","Te",40,4,4);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Emanuel","Zi",18,5,5);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Sebastian","Mu",54,2,2);
 
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",4);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Arpa",1);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",2);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Trompeta",3);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Clarinete",3);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Bateria",4);
     instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",4);
     instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Arpa",1);
     instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",2);
@@ -105,6 +117,7 @@ int main()
                 instrumento_mostrar(pInstrumento,QTY_INSTRUMENTO);
                 break;
             case 10:
+                informes_orquesta_con_mas_musicos(pOrquesta,QTY_ORQUESTA,pMusico,QTY_MUSICO);
                 break;
             case 11:
                 break;

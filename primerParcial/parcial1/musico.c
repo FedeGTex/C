@@ -198,7 +198,7 @@ int musico_modificacion(Musico* arrayMusico,int limite, int id)
  * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
  *
  */
-int musico_ordenar(Musico* arrayMusico,int limite, int orden)
+int musico_ordenarPorNombre(Musico* arrayMusico,int limite, int orden)
 {
     int retorno = -1;
     int i;
@@ -327,6 +327,43 @@ int musico_altaForzada(Musico* arrayMusico,int limite,char* nombre,char* apellid
     }
     return retorno;
 }
+
+/** \brief Ordena por idOrqestat los musicos que no esten vacios
+ * \param Musicos* array de musicos
+ * \param limite int cantidad de elementos del array de musicos
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int musicos_ordenar_por_idOrquesta(Musico* arrayMusico,int limite)
+{
+    int retorno = -1;
+    int i;
+    int flagSwap;
+    Musico auxiliarEstructura;
+
+    if(limite > 0 && arrayMusico != NULL)
+    {
+        do
+        {
+            flagSwap = 0;
+            for(i=0;i<limite-1;i++)
+            {
+                if(!arrayMusico[i].isEmpty && !arrayMusico[i+1].isEmpty)
+                {
+                    if(arrayMusico[i].idOrquesta > arrayMusico[i+1].idOrquesta)
+                    {
+                        auxiliarEstructura = arrayMusico[i];
+                        arrayMusico[i] = arrayMusico[i+1];
+                        arrayMusico[i+1] = auxiliarEstructura;
+                        flagSwap = 1;
+                    }
+                }
+            }
+        }while(flagSwap);
+    }
+    return retorno;
+}
+
 
 int musico_bajaPorOrquesta(Musico* arrayMusico,int limite,int id)
 {

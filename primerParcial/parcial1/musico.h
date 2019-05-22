@@ -19,10 +19,11 @@ int musico_mostrar(Musico* arrayMusico,int limite);
 int musico_alta(Musico* arrayMusico,int limite,Orquesta* arrayOrquesta,int limiteOrquesta,Instrumento* arrayInstrumento,int limiteInstrumento);
 int musico_baja(Musico* arrayMusico,int limite, int id);
 int musico_modificacion(Musico* arrayMusico,int limite, int id);
-int musico_ordenar(Musico* arrayMusico,int limite, int orden);
+int musico_ordenarPorNombre(Musico* arrayMusico,int limite, int orden);
 int musico_buscarPorId(Musico* arrayMusico,int limite, int id);
 int musico_altaForzada(Musico* arrayMusico,int limite,char* nombre,char* apellido,int edad,int idOrquesta,int idInstrumento);
 int musico_bajaPorOrquesta(Musico* arrayMusico,int limite,int id);
 int musicos_listarPorOrquesta(Musico* pMusico,int limite,int id);
+int musicos_ordenar_por_idOrquesta(Musico* arrayMusico,int limite);
 
 #endif // MUSICO_H_INCLUDED
