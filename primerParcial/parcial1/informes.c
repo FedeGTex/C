@@ -1,5 +1,5 @@
-//#include <stdio.h>
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <time.h>
 #include <string.h>
 #include "utn.h"
@@ -7,6 +7,16 @@
 #include "orquesta.h"
 #include "instrumento.h"
 
+
+/** \brief Se ingresa id de orquesta y se imprime los musicos que la componen
+ * \param Orquesta* array de orquesta
+ * \param limiteO int cantidad de elementos del array de orquesta
+ * \param Musico* array de musico
+ * \param limiteM int cantidad de elementos del array de musicos
+ * \param Id ingresado por el usuario
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
 int informes_listarOrquestaConMusicosPorId(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM,int id)
 {
     int retorno=-1;
@@ -20,6 +30,17 @@ int informes_listarOrquestaConMusicosPorId(Orquesta* pOrquesta,int limiteO,Music
     return retorno;
 }
 
+
+
+/** \brief Lista los musicos por tipo de instrumento
+ * \param Musico* array de musicos
+ * \param Limite cantidad de elementos del array de musicos
+ * \param Instrumento* array de instrumentos
+ * \param limite int cantidad de elementos del array de instrumentos
+ * \param tipo-tipo de instrumento
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
 int informes_listarMusicosPorTipoDeInstrumento(Musico* pMusico,int limiteM,Instrumento* pInstrumento,int limiteI,int tipo)
 {
     int retorno=-1;
@@ -110,7 +131,7 @@ int informes_orquesta_con_mas_musicos(Orquesta* pOrquesta,int limiteO,Musico* pM
                 cantMusicos = informes_orquesta_cant_musicos(pOrquesta[i].idOrquesta,pMusico,limiteM);
                 if(maximoMusicos == cantMusicos)
                 {
-                    printf("La orquesta %s %s tipo %d tiene la mayor cantidad de musicos: %d\n",pOrquesta[i].nombre,pOrquesta[i].lugar,pOrquesta[i].tipo,maximoMusicos);
+                    printf("La orquesta %s %s tiene la mayor cantidad de musicos: %d\n",pOrquesta[i].nombre,pOrquesta[i].lugar,maximoMusicos);
                 }
             }
         }
@@ -118,97 +139,211 @@ int informes_orquesta_con_mas_musicos(Orquesta* pOrquesta,int limiteO,Musico* pM
     return retorno;
 }
 
-
-int informes_orquestaConMasDe5(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM)
+/** \brief Muestra la Orquesta con mas de 5 musicos
+ * \param Orquesta* array de orquestas
+ * \param limite int cantidad de elementos del array de Orquesta
+ * \param Musicos* array de Musicos
+ * \param limite int cantidad de elementos del array de musicos
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_orquestaMasDe5Musicos(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM)
 {
-    int i;
-    int cantidad=0;
+    int retorno=-1;
     int cantM;
-    if(pMusico!=NULL && limiteM>0&& pOrquesta!=NULL && limiteO>0)
+    int i;
+
+    if(pOrquesta!=NULL && limiteO>0 && pMusico!=NULL && limiteM>0)
     {
-        for(i=0;i<limiteM;i++)
+        for(i=0;i<limiteO;i++)
         {
             cantM=informes_orquesta_cant_musicos(pOrquesta[i].idOrquesta,pMusico,limiteM);
-            if(!pMusico[i].isEmpty && 5<cantM)
+            if(!pOrquesta[i].isEmpty && cantM>=5)
             {
-                cantidad++;
+                retorno=0;
+                printf("\nLa orquesta con mas de 5 musicos es Id: %d - Nombre: %s - Lugar: %s - tipo: %d\n",pOrquesta[i].idOrquesta,pOrquesta[i].nombre,pOrquesta[i].lugar,pOrquesta[i].tipo);
             }
         }
-        if(!cantidad)
-        {
-            printf("\nNinguna orquesta tiene mas de 5 musicos\n");
-        }else {
-            printf("\nLa cantidad de orquestas que tienen mas de 5 musicos son: %d",cantidad-1);
-            orquesta_imprimirPorId(pOrquesta,limiteO,pOrquesta[i].idOrquesta);
-        }
     }
-    return 0;
+    return retorno;
 }
 
-int informes_cant_musicosMas30(Musico* pMusico,int limiteM)
+
+/** \brief Lista los musicos mayores a 30 años imprimiendo el nombre de la orquesta e intrumento
+ * \param Musico* array de musicos
+ * \param limiteM int cantidad de elementos del array de musicos
+ * \param Orquesta* array de orquestas
+ * \param limiteO int cantidad de elementos del array de orquestas
+ * \param Instrumento* array de instrumentos
+ * \param limiteI cantidad de elementos del array de instrumentos
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_listarMusicosMasDe30Anios(Musico* pMusico,int limiteM,Orquesta* pOrquesta,int limiteO,Instrumento* pInstrumento,int limiteI)
 {
+    int retorno=-1;
     int i;
-    int masTreinta = 0;
+    int posicionO;
+    int posicionI;
+
     if(pMusico!=NULL && limiteM>0)
     {
         for(i=0;i<limiteM;i++)
         {
             if(!pMusico[i].isEmpty && pMusico[i].edad>30)
             {
-                masTreinta ++;
+                retorno=0;
+                posicionO=orquesta_buscarPorId(pOrquesta,limiteO,pMusico[i].idOrquesta);
+                posicionI=instrumento_buscarPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
+
+                printf("Id: %d - Nombre: %s - Apellido: %s - Edad: %d - Nombre Instrumento: %s - Nombre orquesta: %s\n",pMusico[i].idMusico,pMusico[i].nombre,pMusico[i].apellido,pMusico[i].edad,pInstrumento[posicionI].nombre,pOrquesta[posicionO].nombre);
             }
         }
     }
-    return masTreinta;
+    return retorno;
 }
 
 
-int informes_musicosMasDe30(Musico* pMusico,int limiteM,Orquesta* pOrquesta,int limiteO,Instrumento* pInstrumento,int limiteI)
+/** \brief Lista las orquestas ingresadas por el lugar
+ * \param Orquesta* array de orquestas
+ * \param limite int cantidad de elementos del array de Orquesta
+ * \param lugar* lugar ingresado por el usuario
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_listarOrquestasDeUnLugarDeterminado(Orquesta* pOrquesta,int limiteO,char* lugar)
 {
     int retorno=-1;
     int i;
-    int indiceMayor;
-    int idOrq;
-    int idInst;
 
-    if(pMusico!=NULL && limiteM>0 && pOrquesta!=NULL && limiteO>0 && pInstrumento!=NULL && limiteI>0)
+    if(pOrquesta!=NULL && limiteO>0)
+    {
+        for(i=0;i<limiteO;i++)
+        {
+            if(!pOrquesta[i].isEmpty && strcmp(pOrquesta[i].lugar,lugar)==0)
+            {
+                retorno=0;
+                printf("Id: %d - Nombre: %s - Lugar: %s - tipo: %d\n",pOrquesta[i].idOrquesta,pOrquesta[i].nombre,pOrquesta[i].lugar,pOrquesta[i].tipo);
+            }
+        }
+    }
+    return retorno;
+}
+
+/** \brief Lista orquestas completa =o+5inst cuerda =o+3viento =o+percusion
+ * \param Orquesta* array de orquesta
+ * \param limiteO int cantidad de elementos del array de orquesta
+ * \param Musico* array de musicos
+ * \param limiteM int cantidad de elementos del array de musicos
+ * \param Instrumento* array de instrumentos
+ * \param limiteI cantidad de elementos del array de instrumentos
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_orquestaCompleta(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM,Instrumento* pInstrumento,int limiteI)
+{
+    int retorno=-1;
+    int cuerda,viento,percusion,tipo;
+    int i,j;
+
+    if(pOrquesta!=NULL && limiteO>0 && pInstrumento!=NULL && limiteI>0 && pMusico!=NULL && limiteM>0)
+    {
+        for(i=0;i<limiteO;i++)
+        {
+            cuerda=0;
+            viento=0;
+            percusion=0;
+            for(j=0;j<limiteM;j++)
+            {
+                if(pOrquesta[i].idOrquesta==pMusico[j].idOrquesta && !pOrquesta[i].isEmpty)
+                {
+                    tipo=instrumento_retornarTipoPorId(pInstrumento,limiteI,pMusico[j].idInstrumento);
+                    switch(tipo)
+                    {
+                        case 1:
+                            cuerda++;
+                            break;
+                        case 2:
+                        case 3:
+                            viento++;
+                            break;
+                        case 4:
+                            percusion++;
+                            break;
+                    }
+
+                }
+            }
+            if(cuerda>=5&&viento>=3&&percusion>=2)
+            {
+                retorno=0;
+                printf("Id: %d - Nombre: %s - Lugar: %s - tipo: %d\n",pOrquesta[i].idOrquesta,pOrquesta[i].nombre,pOrquesta[i].lugar,pOrquesta[i].tipo);
+            }
+        }
+    }
+    return retorno;
+}
+
+/** \brief Lista los musicos que tocan instrumentos de cuerda
+ * \param Musico* array de musicos
+ * \param limiteM int cantidad de elementos del array de musicos
+ * \param Instrumento* array de instrumentos
+ * \param limiteI cantidad de elementos del array de instrumentos
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_listarMusicosCuerda(Musico* pMusico,int limiteM,Instrumento* pInstrumento,int limiteI)
+{
+    int retorno=-1;
+    int i;
+    int tipo;
+    int posicion;
+
+    if(pMusico!=NULL && limiteM>0 && pInstrumento!=NULL && limiteI)
     {
         for(i=0;i<limiteM;i++)
         {
-
-            if(!pMusico[i].isEmpty)
+           tipo=instrumento_retornarTipoPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
+            if(!pMusico[i].isEmpty && tipo==1)
             {
                 retorno=0;
-                indiceMayor=informes_cant_musicosMas30(pMusico,limiteM);
-                idOrq=orquesta_buscarPorId(pOrquesta,limiteO,pMusico[i].idOrquesta);
-                idInst=instrumento_buscarPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
-                printf("\nid%d - nombre%s - apellido%s - edad%d nombI%s nombO%s",pMusico[indiceMayor].idMusico,pMusico[indiceMayor].nombre,pMusico[indiceMayor].apellido,pMusico[indiceMayor].edad,pInstrumento[idInst].nombre,pOrquesta[idOrq].nombre);
+                posicion=instrumento_buscarPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
+                printf("\nNombre: %s - apellido: %s - edad: %d - Nombre Instrumento: %s - Tipo Inst: %d",pMusico[i].nombre,pMusico[i].apellido,pMusico[i].edad,pInstrumento[posicion].nombre,pInstrumento[posicion].tipo);
             }
         }
     }
     return retorno;
 }
 
-
-/*int informes_orquestasDeUnLugar(Orquesta* pOrquesta,int limite,int lugar)
+/** \brief Calcula el promedio de musicos por orquesta
+ * \param Musico* array de musicos
+ * \param limiteM int cantidad de elementos del array de musicos
+ * \param Orquesta* array de orquestas
+ * \param limiteO int cantidad de elementos del array de orquestas
+ * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
+ *
+ */
+int informes_imprimirPromedioMusicosPorOrquesta(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM)
 {
     int retorno=-1;
     int i;
+    int cantM=0;
+    int cantO=0;
+    float promedio;
 
-    if(pOrquesta!=NULL && limite>0)
+    if(pOrquesta!=NULL && limiteO>0 && pMusico!=NULL && limiteM>0)
     {
-        for(i=0;i<limite;i++)
+        for(i=0;i<limiteO;i++)
         {
-            if(!pOrquesta[i].isEmpty && (strncpy(pOrquesta[i].lugar,lugar,20)))
+            if(!pOrquesta[i].isEmpty)
             {
-                retorno=0;
-                orquesta_mostrar(pOrquesta,limite);
-
+                cantM+=informes_orquesta_cant_musicos(pOrquesta[i].idOrquesta,pMusico,limiteM);
+                cantO++;
             }
         }
+        promedio=(float)cantM/(float)cantO;
+        printf("\nEl promedio es: %.2f",promedio);
     }
     return retorno;
 }
-*/
-
 

@@ -26,6 +26,4 @@ int musico_bajaPorOrquesta(Musico* arrayMusico,int limite,int id);
 int musicos_listarPorOrquesta(Musico* pMusico,int limite,int id);
 int musicos_ordenar_por_idOrquesta(Musico* arrayMusico,int limite);
 
-int musicos_ordenar_por_idOrquesta(Musico* pMusico,int limite);
-
 #endif // MUSICO_H_INCLUDED

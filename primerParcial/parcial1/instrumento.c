@@ -1,5 +1,5 @@
-//#include <stdio.h>
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
@@ -339,6 +339,20 @@ int instrumento_imprimirTipoPorId(Instrumento* pInstrumento,int limite,int id)
                 break;
             }
         }
+    }
+    return retorno;
+}
+
+
+int instrumento_retornarTipoPorId(Instrumento* pInstrumento,int limiteI,int id)
+{
+    int retorno=1;
+    int posicion;
+
+    if(pInstrumento!=NULL && limiteI>0)
+    {
+        posicion=instrumento_buscarPorId(pInstrumento,limiteI,id);
+        retorno=pInstrumento[posicion].tipo;
     }
     return retorno;
 }

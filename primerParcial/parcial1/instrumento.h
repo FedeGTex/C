@@ -18,4 +18,9 @@ int instrumento_ordenar(Instrumento* array,int limite, int orden);
 int instrumento_buscarPorId(Instrumento* array,int limite, int id);
 int instrumento_altaForzada(Instrumento* array,int limite,char* nombre,int tipo);
 
+
+
+int instrumento_retornarTipoPorId(Instrumento* pInstrumento,int limiteI,int id);
+
+
 #endif // INSTRUMENTO_H_INCLUDED

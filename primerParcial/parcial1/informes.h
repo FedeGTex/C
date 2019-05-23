@@ -6,10 +6,12 @@ int informes_listarMusicosPorTipoDeInstrumento(Musico* pMusico,int limiteM,Instr
 int informes_orquesta_cant_musicos(int idOrquesta,Musico* pMusico,int limiteMusico);
 int informes_orquesta_con_mas_musicos(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
 
-
-
-int informes_orquestaConMasDe5(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
-int informes_cant_musicosMas30(Musico* pMusico,int limiteM);
-int informes_orquestasDeUnLugar(Orquesta* pOrquesta,int limite,int lugar);
+//InformesParcial
+int informes_orquestaMasDe5Musicos(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
+int informes_listarMusicosMasDe30Anios(Musico* pMusico,int limiteM,Orquesta* pOrquesta,int limiteO,Instrumento* pInstrumento,int limiteI);
+int informes_listarOrquestasDeUnLugarDeterminado(Orquesta* pOrquesta,int limiteO,char* lugar);
+int informes_orquestaCompleta(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM,Instrumento* pInstrumento,int limiteI);
+int informes_listarMusicosCuerda(Musico* pMusico,int limiteM,Instrumento* pInstrumento,int limiteI);
+int informes_imprimirPromedioMusicosPorOrquesta(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
 
 #endif // INFORMES_H_INCLUDED

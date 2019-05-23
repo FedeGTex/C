@@ -1,5 +1,5 @@
-//#include <stdio.h>
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <time.h>
 #include <string.h>
 #include "utn.h"
@@ -405,11 +405,9 @@ int musicos_listarPorOrquesta(Musico* pMusico,int limite,int id)
             {
                 auxMusico=pMusico[i];
                 retorno=0;
-                printf("\nId: %d - nombre: %s - apellido: %s - edad: %d - tipo %d id orquesta: %d\n",auxMusico.idMusico,auxMusico.nombre,auxMusico.apellido,auxMusico.edad,auxMusico.idInstrumento,auxMusico.idOrquesta);
+                printf("\nId: %d - nombre: %s - apellido: %s - edad: %d - id orquesta: %d\n",auxMusico.idMusico,auxMusico.nombre,auxMusico.apellido,auxMusico.edad,auxMusico.idOrquesta);
             }
         }
     }
     return retorno;
 }
-
-

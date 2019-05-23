@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1558634223 source:c:\users\fede\desktop\c\primerparcial\parcial1\informes.c
+	<stdio.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"musico.h"
+	"orquesta.h"
+	"instrumento.h"
+
+1558291118 c:\users\fede\desktop\c\primerparcial\parcial1\utn.h
+
+1558441023 c:\users\fede\desktop\c\primerparcial\parcial1\musico.h
+	"instrumento.h"
+	"orquesta.h"
+
+1558628166 c:\users\fede\desktop\c\primerparcial\parcial1\instrumento.h
+
+1558304730 c:\users\fede\desktop\c\primerparcial\parcial1\orquesta.h
+
+1558629720 source:c:\users\fede\desktop\c\primerparcial\parcial1\instrumento.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"instrumento.h"
+
+1558633794 source:c:\users\fede\desktop\c\primerparcial\parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"orquesta.h"
+	"musico.h"
+	"instrumento.h"
+	"informes.h"
+
+1558633735 c:\users\fede\desktop\c\primerparcial\parcial1\informes.h
+
+1558441307 source:c:\users\fede\desktop\c\primerparcial\parcial1\musico.c
+	<stdio.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"musico.h"
+	"orquesta.h"
+	"instrumento.h"
+
+1558372905 source:c:\users\fede\desktop\c\primerparcial\parcial1\orquesta.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"orquesta.h"
+
+1558291372 source:c:\users\fede\desktop\c\primerparcial\parcial1\utn.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
