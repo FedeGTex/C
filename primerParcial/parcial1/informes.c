@@ -1,5 +1,5 @@
-#include <stdio.h>
-//#include <stdio_ext.h>
+//#include <stdio.h>
+#include <stdio_ext.h>
 #include <time.h>
 #include <string.h>
 #include "utn.h"
@@ -110,11 +110,105 @@ int informes_orquesta_con_mas_musicos(Orquesta* pOrquesta,int limiteO,Musico* pM
                 cantMusicos = informes_orquesta_cant_musicos(pOrquesta[i].idOrquesta,pMusico,limiteM);
                 if(maximoMusicos == cantMusicos)
                 {
-                    printf("La orquesta %s %s tiene la mayor cantidad de musicos: %d\n",pOrquesta[i].nombre,pOrquesta[i].lugar,maximoMusicos);
+                    printf("La orquesta %s %s tipo %d tiene la mayor cantidad de musicos: %d\n",pOrquesta[i].nombre,pOrquesta[i].lugar,pOrquesta[i].tipo,maximoMusicos);
                 }
             }
         }
     }
     return retorno;
 }
+
+
+int informes_orquestaConMasDe5(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM)
+{
+    int i;
+    int cantidad=0;
+    int cantM;
+    if(pMusico!=NULL && limiteM>0&& pOrquesta!=NULL && limiteO>0)
+    {
+        for(i=0;i<limiteM;i++)
+        {
+            cantM=informes_orquesta_cant_musicos(pOrquesta[i].idOrquesta,pMusico,limiteM);
+            if(!pMusico[i].isEmpty && 5<cantM)
+            {
+                cantidad++;
+            }
+        }
+        if(!cantidad)
+        {
+            printf("\nNinguna orquesta tiene mas de 5 musicos\n");
+        }else {
+            printf("\nLa cantidad de orquestas que tienen mas de 5 musicos son: %d",cantidad-1);
+            orquesta_imprimirPorId(pOrquesta,limiteO,pOrquesta[i].idOrquesta);
+        }
+    }
+    return 0;
+}
+
+int informes_cant_musicosMas30(Musico* pMusico,int limiteM)
+{
+    int i;
+    int masTreinta = 0;
+    if(pMusico!=NULL && limiteM>0)
+    {
+        for(i=0;i<limiteM;i++)
+        {
+            if(!pMusico[i].isEmpty && pMusico[i].edad>30)
+            {
+                masTreinta ++;
+            }
+        }
+    }
+    return masTreinta;
+}
+
+
+int informes_musicosMasDe30(Musico* pMusico,int limiteM,Orquesta* pOrquesta,int limiteO,Instrumento* pInstrumento,int limiteI)
+{
+    int retorno=-1;
+    int i;
+    int indiceMayor;
+    int idOrq;
+    int idInst;
+
+    if(pMusico!=NULL && limiteM>0 && pOrquesta!=NULL && limiteO>0 && pInstrumento!=NULL && limiteI>0)
+    {
+        for(i=0;i<limiteM;i++)
+        {
+
+            if(!pMusico[i].isEmpty)
+            {
+                retorno=0;
+                indiceMayor=informes_cant_musicosMas30(pMusico,limiteM);
+                idOrq=orquesta_buscarPorId(pOrquesta,limiteO,pMusico[i].idOrquesta);
+                idInst=instrumento_buscarPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
+                printf("\nid%d - nombre%s - apellido%s - edad%d nombI%s nombO%s",pMusico[indiceMayor].idMusico,pMusico[indiceMayor].nombre,pMusico[indiceMayor].apellido,pMusico[indiceMayor].edad,pInstrumento[idInst].nombre,pOrquesta[idOrq].nombre);
+            }
+        }
+    }
+    return retorno;
+}
+
+
+/*int informes_orquestasDeUnLugar(Orquesta* pOrquesta,int limite,int lugar)
+{
+    int retorno=-1;
+    int i;
+
+    if(pOrquesta!=NULL && limite>0)
+    {
+        for(i=0;i<limite;i++)
+        {
+            if(!pOrquesta[i].isEmpty && (strncpy(pOrquesta[i].lugar,lugar,20)))
+            {
+                retorno=0;
+                orquesta_mostrar(pOrquesta,limite);
+
+            }
+        }
+    }
+    return retorno;
+}
+*/
+
 

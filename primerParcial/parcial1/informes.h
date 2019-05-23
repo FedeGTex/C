@@ -7,4 +7,9 @@ int informes_orquesta_cant_musicos(int idOrquesta,Musico* pMusico,int limiteMusi
 int informes_orquesta_con_mas_musicos(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
 
 
+
+int informes_orquestaConMasDe5(Orquesta* pOrquesta,int limiteO,Musico* pMusico,int limiteM);
+int informes_cant_musicosMas30(Musico* pMusico,int limiteM);
+int informes_orquestasDeUnLugar(Orquesta* pOrquesta,int limite,int lugar);
+
 #endif // INFORMES_H_INCLUDED
