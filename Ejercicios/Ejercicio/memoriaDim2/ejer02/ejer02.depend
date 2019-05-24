@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1558653142 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/memoriaDim2/ejer02/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"persona.h"
+	"utn.h"
+
+1558652917 /home/alumno/Escritorio/C/Ejercicios/Ejercicio/memoriaDim2/ejer02/persona.h
+
+1558648125 /home/alumno/Escritorio/C/Ejercicios/Ejercicio/memoriaDim2/ejer02/utn.h
+
+1558654094 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/memoriaDim2/ejer02/persona.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"persona.h"
+	"utn.h"
+
+1558648141 source:/home/alumno/Escritorio/C/Ejercicios/Ejercicio/memoriaDim2/ejer02/utn.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
