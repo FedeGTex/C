@@ -31,63 +31,28 @@ int main()
     musico_init(pMusico,QTY_MUSICO);
     instrumento_init(pInstrumento,QTY_INSTRUMENTO);
 
-    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Chistosa","Boedo",2);
-    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Matematica","Belgrano",1);
-    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Quilombera","Caballito",1);
-    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Silenciosa","Constitucion",3);
-    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta Muda","Bernal",2);
+    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta1","Lugar1",1);
+    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta2","Lugar1",1);
+    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta3","Lugar2",1);
+    orquesta_altaForzada(pOrquesta,QTY_ORQUESTA,"Orquesta4","Lugar3",1);
 
-    musico_altaForzada(pMusico,QTY_MUSICO,"Gonzalo","Perez",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Federico","Gonzalez",31,1,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Miriam","Martinez",33,1,3);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Romina","Gomez",40,1,4);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Ariel","Dominguez",18,1,5);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,1,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sergio","Az",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Carlos","Pe",31,1,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Jessica","Ka",33,1,3);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sabrina","Te",40,1,4);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Emanuel","Zi",18,1,5);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sebastian","Mu",54,1,2);
-     musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,1,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sergio","Az",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Carlos","Pe",31,2,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Jessica","Ka",33,3,3);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sabrina","Te",40,2,4);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Emanuel","Zi",18,2,5);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sebastian","Mu",54,2,2);
-     musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,2,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sergio","Az",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Carlos","Pe",31,2,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Jessica","Ka",33,3,3);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sabrina","Te",40,2,4);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Emanuel","Zi",18,2,5);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sebastian","Mu",54,2,2);
-     musico_altaForzada(pMusico,QTY_MUSICO,"Gabriel","Gimenez",54,2,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sergio","Az",22,1,1);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Carlos","Pe",31,2,2);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Jessica","Ka",33,3,3);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sabrina","Te",40,2,4);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Emanuel","Zi",18,2,5);
-    musico_altaForzada(pMusico,QTY_MUSICO,"Sebastian","Mu",54,2,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus1","Amus1",30,1,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus2","Amus2",20,2,5);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus3","Amus3",25,4,2);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus4","Amus4",27,4,1);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus5","Amus5",22,1,3);
+    musico_altaForzada(pMusico,QTY_MUSICO,"Mus6","Amus6",35,3,4);
 
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",4);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Arpa",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",2);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Trompeta",3);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Clarinete",3);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Bateria",4);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Tambor",4);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Arpa",1);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Flauta",2);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Trompeta",3);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Clarinete",3);
-    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Bateria",4);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Inst1",1);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Inst2",2);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Inst3",2);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Inst4",3);
+    instrumento_altaForzada(pInstrumento,QTY_INSTRUMENTO,"Inst4",4);
 
 
     do
     {
-        utn_getEntero(&menu,3,"\n1.Agregar orquesta\n2.Eliminar orquesta\n3.Imprimir orquesta\n4.Agregar musico\n5.Modificar musico\n6.Eliminar musico\n7.Imprimir musicos\n8.Agregar instrumento\n9.Imprimir instrumento\n10.Salir.\n","\nNo valida\n",1,31);
+        utn_getEntero(&menu,3,"\n1.Agregar orquesta\n2.Eliminar orquesta\n3.Imprimir orquesta\n4.Agregar musico\n5.Modificar musico\n6.Eliminar musico\n7.Imprimir musicos\n8.Agregar instrumento\n9.Imprimir instrumento\n10.Orquesta con mas de 5 musicos\n11.Musicos mayores a 30\n12.Orquesta de un lugar determinado\n13.Orquesta completa\n14.Musicos de orquestas\n15.Orquesta con mas musicos\n16.Musicos que tocan cuerda\n17.Promedio.\n","\nNo valida\n",1,31);
         switch(menu)
         {
             case 1:
@@ -146,7 +111,7 @@ int main()
                 break;
             case 12:
                 orquesta_mostrar(pOrquesta,QTY_ORQUESTA);
-                if(!utn_getLetras(lugar,20,2,"\nIngrese un lugar: ","\nIngrese un lugar valido!"))
+                if(!utn_getLetrasYNumeros(lugar,20,"\nIngrese un lugar: "))
                 {
                     informes_listarOrquestasDeUnLugarDeterminado(pOrquesta,QTY_ORQUESTA,lugar);
                 }

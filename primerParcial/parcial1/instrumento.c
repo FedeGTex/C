@@ -346,7 +346,7 @@ int instrumento_imprimirTipoPorId(Instrumento* pInstrumento,int limite,int id)
 
 int instrumento_retornarTipoPorId(Instrumento* pInstrumento,int limiteI,int id)
 {
-    int retorno=1;
+    int retorno=-1;
     int posicion;
 
     if(pInstrumento!=NULL && limiteI>0)

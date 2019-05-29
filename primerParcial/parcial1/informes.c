@@ -271,7 +271,6 @@ int informes_orquestaCompleta(Orquesta* pOrquesta,int limiteO,Musico* pMusico,in
                             percusion++;
                             break;
                     }
-
                 }
             }
             if(cuerda>=5&&viento>=3&&percusion>=2)
@@ -303,12 +302,15 @@ int informes_listarMusicosCuerda(Musico* pMusico,int limiteM,Instrumento* pInstr
     {
         for(i=0;i<limiteM;i++)
         {
+            if(!pMusico[i].isEmpty)
            tipo=instrumento_retornarTipoPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
             if(!pMusico[i].isEmpty && tipo==1)
             {
                 retorno=0;
+                musico_ordenarPorApellido(pMusico,limiteM,1);
                 posicion=instrumento_buscarPorId(pInstrumento,limiteI,pMusico[i].idInstrumento);
                 printf("\nNombre: %s - apellido: %s - edad: %d - Nombre Instrumento: %s - Tipo Inst: %d",pMusico[i].nombre,pMusico[i].apellido,pMusico[i].edad,pInstrumento[posicion].nombre,pInstrumento[posicion].tipo);
+
             }
         }
     }

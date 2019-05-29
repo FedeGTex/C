@@ -198,7 +198,7 @@ int musico_modificacion(Musico* arrayMusico,int limite, int id)
  * \return Si devuelve 0 salio todo bien. Si devuelve un numero negativo hay error
  *
  */
-int musico_ordenarPorNombre(Musico* arrayMusico,int limite, int orden)
+int musico_ordenarPorApellido(Musico* arrayMusico,int limite, int orden)
 {
     int retorno = -1;
     int i;
@@ -214,7 +214,7 @@ int musico_ordenarPorNombre(Musico* arrayMusico,int limite, int orden)
             {
                 if(!arrayMusico[i].isEmpty && !arrayMusico[i+1].isEmpty)
                 {
-                    if((strcmp(arrayMusico[i].nombre,arrayMusico[i+1].nombre) > 0 && orden) || (strcmp(arrayMusico[i].nombre,arrayMusico[i+1].nombre) < 0 && !orden))
+                    if((strcmp(arrayMusico[i].apellido,arrayMusico[i+1].apellido) > 0 && orden) || (strcmp(arrayMusico[i].apellido,arrayMusico[i+1].apellido) < 0 && !orden))
                     {
                         auxiliarEstructura = arrayMusico[i];
                         arrayMusico[i] = arrayMusico[i+1];
