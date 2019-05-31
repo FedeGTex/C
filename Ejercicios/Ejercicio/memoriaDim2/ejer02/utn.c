@@ -317,7 +317,8 @@ int utn_getEmial(char *pBuffer,int limite,int reintentos,char* msj,char*msjError
     }
     return retorno;
 }
-/*int utn_getCuit(char *pBuffer,int limite,int reintentos,char* msj,char*msjError){
+/*
+int utn_getCuit(char *pBuffer,int limite,int reintentos,char* msj,char*msjError){
     int retorno=-1;
     char buffer[limite];
     if(pBuffer!=NULL && limite >0 && reintentos >=0){

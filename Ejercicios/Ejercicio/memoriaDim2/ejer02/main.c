@@ -1,31 +1,41 @@
-//#include "stdio.h"
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include "persona.h"
-#include "utn.h"
-#define QTY_PERSONA 100
-
 
 int main()
 {
-    Persona* listaPersona[QTY_PERSONA];
-    Persona* auxPersona;
-    //char nombreAux[31];
-    //int indexVacio;
-
-    Persona_inicializarArray(listaPersona,QTY_PERSONA);
-    auxPersona=Persona_new();
-    //indexVacio=Persona_buscarLugarVacio(listaPersona,QTY_PERSONA);
-    if(auxPersona!=NULL)
+    /*Persona* arrayPersona[QTY_ARRAYPER];
+    persona_initArray(arrayPersona,QTY_ARRAYPER);
+    persona_addPersona(arrayPersona,QTY_ARRAYPER,"\nDATO NO VALIDO\n",3);
+    */
+    char bufferId[1024];
+    char bufferNombre[1024];
+    char bufferApellido[1024];
+    char bufferEdad[1024];
+    int lenList=0;
+    int i=0;
+    FILE *pArchivo;
+    Persona* pListaPersona[1000];
+    pArchivo= fopen("data.csv","r");
+    if(pArchivo!= NULL)
     {
-        Persona_alta(auxPersona,QTY_PERSONA);
-        Persona_mostrar(auxPersona);
-        //Persona_setNombre(auxPersona,"Juan");
-        //listaPersona[indexVacio]=auxPersona;
-        //Persona_getNombre(listaPersona[indexVacio],nombreAux);
-        //printf("%s",nombreAux);
+
+        do{
+            fscanf(pArchivo,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferApellido,bufferEdad);
+            //printf("\n%s %s %s %s\n",bufferId,bufferNombre,bufferApellido,bufferEdad);
+            pListaPersona[lenList]=persona_newParametros(bufferId,bufferNombre,bufferApellido,bufferEdad);
+            if(pListaPersona!=NULL)
+            {
+                lenList++;
+            }
+        }while(!feof(pArchivo));
+        for(i=0;i<lenList;i++)
+        {
+            printf("%d - %s - %s - %d\n",pListaPersona[i]->id,pListaPersona[i]->nombre,pListaPersona[i]->apellido,pListaPersona[i]->edad);
+        }
+        fclose(pArchivo);
     }
+
     return 0;
 }
