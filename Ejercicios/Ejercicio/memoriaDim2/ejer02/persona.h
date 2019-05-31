@@ -33,5 +33,6 @@ int persona_addPersona(Persona* arrayPersona[],int lenPersona,char* msgE,int tri
 
 int persona_initArray(Persona* arrayPer[],int lenPer);
 int persona_findFree(Persona* arrayPersona[], int lenPersona);
+int parserPersona(char* pFile,Persona* aPers[],int len);
 
 #endif // PERSONA_H_INCLUDED
