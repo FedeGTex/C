@@ -15,20 +15,19 @@ Persona* persona_newParametros(char*id,char* nombre,char* apellido,char* edad);
 int persona_delete(Persona* this);
 
 
-int persona_setId(Persona* this, int value);
-int persona_setLegajo(Persona* this, int value);
+int persona_setId(Persona* this,char* id);
 int persona_setEdad(Persona* this, char* value);
 int persona_setNombre(Persona* this, char* value);
 int persona_setApellido(Persona* this, char* value);
 int persona_setIdString(Persona* this, char* value);
 
 int persona_getId(Persona* this, int* value);
-int persona_getLegajo(Persona* this, int* value);
 int persona_getEdad(Persona* this, int* value);
 int persona_getNombre(Persona* this, char* value);
 int persona_getApellido(Persona* this, char* value);
 
-int persona_addPersona(Persona* arrayPersona[],int lenPersona,char* msgE,int tries);
+int persona_addPersona(Persona* arrayPersona[],int lenPersona);
+int persona_guardarTexto(Persona* arrayPersona[],int limite,char* path);
 
 
 int persona_initArray(Persona* arrayPer[],int lenPer);

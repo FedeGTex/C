@@ -26,3 +26,28 @@
 	<time.h>
 	"utn.h"
 
+1559749779 source:c:\users\fede\desktop\c\ejercicios\ejercicio\memoriadim2\ejer02\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"persona.h"
+
+1559558282 c:\users\fede\desktop\c\ejercicios\ejercicio\memoriadim2\ejer02\utn.h
+
+1559750157 c:\users\fede\desktop\c\ejercicios\ejercicio\memoriadim2\ejer02\persona.h
+
+1559655165 source:c:\users\fede\desktop\c\ejercicios\ejercicio\memoriadim2\ejer02\utn.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
+1559749555 source:c:\users\fede\desktop\c\ejercicios\ejercicio\memoriadim2\ejer02\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+	"utn.h"
+
