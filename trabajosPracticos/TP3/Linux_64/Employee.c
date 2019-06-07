@@ -2,14 +2,19 @@
 #include <string.h>
 #include <stdio_ext.h>
 #include <ctype.h>
-#include "LinkedList.h"
 #include "utn.h"
+#include "LinkedList.h"
 #include "Employee.h"
 
-static int isValidId(char* employeeId);
+//static int isValidId(char* employeeId);
 static int isValidNombre(char* nombre);
-static int isValidSueldo(char* sueldo);
-static int isValidHorasTrabajadas(char* horasTrabajadas);
+static int isValidHorasTrabajadas(int horas);
+static int isValidId(int id);
+static int isValidSueldo(int sueldo);
+static int isInnt(char *pBuffer);
+static int isLettras(char*pBuffer);
+//static int isValidSueldo(char* sueldo);
+//static int isValidHorasTrabajadas(char* horasTrabajadas);
 
 Employee* employee_new(void)
 {
@@ -33,22 +38,19 @@ Employee* employee_newParametros(char* id,char* nombre,char* horasTrabajadas,cha
 {
     Employee* this;
     this=employee_new();
-    if(this!=NULL)
-    {
-        if( employee_setNombre(this,nombre)==-1 ||
-            employee_setId(this,id)==-1 ||
-            employee_setHorasTrabajadas(this,horasTrabajadas) == -1 ||
-            employee_setSueldo(this,sueldo) == -1)
-        {
-
-            employee_delete(this);
-            this=NULL;
-        }
-    }
-    return this;
+    if(!isInnt(id) && !isLettras(nombre) && !isInnt(horasTrabajadas) && !isInnt(sueldo)&&
+       !employee_setId(this,atoi(id))&&
+       !employee_setNombre(this,nombre)&&
+       !employee_setHorasTrabajadas(this,atoi(horasTrabajadas))&&
+       !employee_setSueldo(this,atoi(sueldo)))
+       {
+        return this;
+       }
+       employee_delete(this);
+       return NULL;
 }
 
-int employee_setId(Employee* this,char* id)
+/*int employee_setId(Employee* this,char* id)
 {
     int retorno=-1;
     static int proximoId=-1;
@@ -70,6 +72,30 @@ int employee_setId(Employee* this,char* id)
 
     }
     return retorno;
+}*/
+
+int employee_setId(Employee* this,int id)
+{
+    int retorno=-1;
+    static int proximoId=-1;
+
+    if(this!=NULL && id==-1 && !isValidId(id))
+    {
+        proximoId++;
+        this->id=proximoId;
+        retorno=0;
+    }
+    else{
+        this->id=id;
+        retorno=0;
+    }
+
+    if(id>proximoId)
+    {
+        proximoId=id;
+        retorno=0;
+    }
+    return retorno;
 }
 
 int employee_getId(Employee* this,int* id)
@@ -83,25 +109,12 @@ int employee_getId(Employee* this,int* id)
     return retorno;
 }
 
-static int isValidId(char* employeeId)
+static int isValidId(int id)
 {
-    int i=0;
-    int retorno=0;
-    int contadorDeGuiones=0;
-    while(employeeId[i] != '\0')
+    int retorno=-1;
+    if(id>-2)
     {
-        if(employeeId[i] == '-' && contadorDeGuiones==0)
-        {
-            contadorDeGuiones++;
-            i++;
-            continue;
-        }
-        if(employeeId[i] < '0' || employeeId[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+        retorno=0;
     }
     return retorno;
 }
@@ -130,33 +143,30 @@ int employee_getNombre(Employee* this,char* nombre)
 
 static int isValidNombre(char* nombre)
 {
-    int i=0;
-    int retorno=0;
-    int flag=0;
-    while(nombre[i] != '\0')
+    int retorno=-1;
+    if(nombre!= NULL && strlen(nombre)<50 && strlen(nombre)>1)
     {
-        if(flag==0)
-        {
-            nombre[i]=toupper(nombre[i]);
-            flag=1;
-        }else if ((nombre[i] < 'A' || nombre[i] > 'Z') &&
-                (nombre[i] < 'a' || nombre[i] > 'z'))
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+        retorno=0;
     }
-
     return retorno;
 }
-
-int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas)
+/*int employee_setHorasTrabajadas(Employee* this,char* horasTrabajadas)
 {
     int retorno=-1;
     if(this != NULL && !isValidHorasTrabajadas(horasTrabajadas))
     {
         this->horasTrabajadas=atoi(horasTrabajadas);
+        retorno=0;
+    }
+    return retorno;
+}*/
+
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+{
+    int retorno=-1;
+    if(this!=NULL && !isValidHorasTrabajadas(horasTrabajadas))
+    {
+        this->horasTrabajadas=horasTrabajadas;
         retorno=0;
     }
     return retorno;
@@ -173,29 +183,33 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
     return retorno;
 }
 
-static int isValidHorasTrabajadas(char* horasTrabajadas)
+static int isValidHorasTrabajadas(int horas)
 {
-    int i=0;
-    int retorno=0;
-    while(horasTrabajadas[i] != '\0')
+    int retorno=-1;
+    if(horas>0)
     {
-        if(horasTrabajadas[i] < '0' || horasTrabajadas[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+        retorno=0;
     }
-
     return retorno;
 }
 
-int employee_setSueldo(Employee* this,char* sueldo)
+/*int employee_setSueldo(Employee* this,char* sueldo)
 {
     int retorno=-1;
     if(this != NULL && !isValidSueldo(sueldo))
     {
         this->sueldo=atoi(sueldo);
+        retorno=0;
+    }
+    return retorno;
+}*/
+
+int employee_setSueldo(Employee* this,int sueldo)
+{
+    int retorno=-1;
+    if(this!=NULL && !isValidSueldo(sueldo))
+    {
+        this->sueldo=sueldo;
         retorno=0;
     }
     return retorno;
@@ -212,21 +226,148 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return retorno;
 }
 
-static int isValidSueldo(char* sueldo)
+static int isValidSueldo(int sueldo)
 {
-    int i=0;
-    int retorno=0;
-    while(sueldo[i] != '\0')
+    int retorno=-1;
+    if(sueldo>0)
     {
-        if(sueldo[i] < '0' || sueldo[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+        retorno=0;
     }
+    return retorno;
+}
 
+int employee_guardarTexto(FILE* pFile,LinkedList* pArrayListEmployee)
+{
+    int retorno=-1;
+    int i=0;
+    int bufferId;
+    char buffernombre[1024];
+    int bufferHorasTrabajadas;
+    int bufferSueldo;
+    int limite;
+    Employee* auxEmployee;
+    if(pFile!=NULL && pArrayListEmployee!=NULL)
+    {
+        fprintf(pFile,"id,nombre,horasTrabajadas,sueldo\n");
+        limite=ll_len(pArrayListEmployee);
+        do
+        {
+            auxEmployee=(Employee*)ll_get(pArrayListEmployee,i);
+            employee_getId(auxEmployee,&bufferId);
+            employee_getNombre(auxEmployee,buffernombre);
+            employee_getHorasTrabajadas(auxEmployee,&bufferHorasTrabajadas);
+            employee_getSueldo(auxEmployee,&bufferSueldo);
+            fprintf(pFile,"%d,%s,%d,%d\n",bufferId,buffernombre,bufferHorasTrabajadas,bufferSueldo);
+            i++;
+        }while(i<limite);
+        if(i==limite)
+        {
+            retorno=0;
+        }
+    }
     return retorno;
 }
 
 
+int employee_guardarBinario(FILE* pFile,LinkedList* pArrayListEmployee)
+{
+    int retorno=-1;
+    int i;
+    int limite;
+    Employee* auxEmployee;
+    if(pFile!=NULL && pArrayListEmployee!=NULL)
+    {
+        limite=ll_len(pArrayListEmployee);
+        retorno=0;
+        for(i=0;i<limite;i++)
+        {
+            auxEmployee=ll_get(pArrayListEmployee,i);
+            if(auxEmployee!=NULL)
+            {
+                fwrite(auxEmployee,sizeof(Employee),1,pFile);
+            }
+        }
+        if(i==limite)
+        {
+            retorno=0;
+        }
+    }
+    return retorno;
+}
+
+int employee_criterioNombre(void* thisA,void* thisB)
+{
+    int retorno=0;
+    char nombreA[1024];
+    char nombreB[1024];
+    employee_getNombre((Employee*)thisA,nombreA);
+    employee_getNombre((Employee*)thisB,nombreB);
+    if(strcmp(nombreA,nombreB)>0)
+    {
+        retorno=1;
+    }else if(strcmp(nombreA,nombreB)<0)
+    {
+        retorno=-1;
+    }
+    return retorno;
+}
+
+
+int employee_validarEmpleado(Employee* auxEmployee)
+{
+    int retorno=-1;
+
+    if(!isValidId(auxEmployee->id)&&
+        !isValidNombre(auxEmployee->nombre) &&
+        !isValidHorasTrabajadas(auxEmployee->horasTrabajadas)&&
+        !isValidSueldo(auxEmployee->sueldo))
+        {
+            retorno=0;
+        }
+    return retorno;
+}
+
+static int isLettras(char*pBuffer)
+{
+    int retorno=-1;
+    int i=0;
+    if(pBuffer!=NULL)
+    {
+        do{
+            if(*(pBuffer+i)==' '||*(pBuffer+i)=='-')
+            {
+                i++;
+                continue;
+            }
+            if((*(pBuffer+i)<65||*(pBuffer+i)>90) && (*(pBuffer+i)<97||*(pBuffer+i)>122))
+            {
+                break;
+            }
+            i++;
+        }while(i<strlen(pBuffer));
+        if(i==strlen(pBuffer))
+        {
+            retorno=0;
+        }
+    }
+    return retorno;
+}
+
+
+static int isInnt(char *pBuffer)
+{
+    int retorno=-1;
+    int i=0;
+    do{
+        if(*(pBuffer+i)<48||*(pBuffer+i)>57)
+        {
+                break;
+        }
+        i++;
+    }while (i<strlen(pBuffer));
+    if(i==strlen(pBuffer))
+    {
+        retorno=0;
+    }
+    return retorno;
+}

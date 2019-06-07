@@ -53,3 +53,20 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1559856688 source:/home/alumno/Escritorio/C/trabajosPracticos/TP3/Linux_64/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1559856688 /home/alumno/Escritorio/C/trabajosPracticos/TP3/Linux_64/utn.h
+
+1559856688 /home/alumno/Escritorio/C/trabajosPracticos/TP3/Linux_64/LinkedList.h
+
+1559856688 /home/alumno/Escritorio/C/trabajosPracticos/TP3/Linux_64/Controller.h
+
+1559856688 /home/alumno/Escritorio/C/trabajosPracticos/TP3/Linux_64/Employee.h
+

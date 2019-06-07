@@ -1,5 +1,4 @@
-#include "stdio.h"
-//#include <stdio_ext.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
@@ -94,8 +93,7 @@ int getString(char* pBuffer,int limite){
     char bufferString[4096];
     int retorno =-1;
     if (pBuffer != NULL && limite >0){
-        //__fpurge(stdin);
-        fflush(stdin);
+        __fpurge(stdin);
         fgets(bufferString,sizeof(bufferString),stdin);
         if (bufferString[strlen(bufferString)-1]=='\n'){
             bufferString[strlen(bufferString)-1]='\0';
@@ -123,7 +121,7 @@ int utn_mostrarArray(int * pArray,int limite){
     }
     return 0;
 }
-/*int utn_calcularNumeroMaximo(int *pArray,int limite,int *maximo){
+int utn_calcularNumeroMaximo(int *pArray,int limite,int *maximo){
     int auxMax;
     int i;
     int retorno=-1;
@@ -139,7 +137,7 @@ int utn_mostrarArray(int * pArray,int limite){
     }
     *maximo=auxMax;
     return retorno;
-}*/
+}
 int utn_initArray(int * pArray,int limite,int valor){
     int i;
     int retorno=-1;
@@ -317,7 +315,6 @@ int utn_getEmial(char *pBuffer,int limite,int reintentos,char* msj,char*msjError
     }
     return retorno;
 }
-/*
 int utn_getCuit(char *pBuffer,int limite,int reintentos,char* msj,char*msjError){
     int retorno=-1;
     char buffer[limite];
@@ -349,4 +346,4 @@ int utn_getCuit(char *pBuffer,int limite,int reintentos,char* msj,char*msjError)
         retorno=0;
     }
     return retorno;
-}*/
+}
