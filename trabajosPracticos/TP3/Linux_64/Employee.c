@@ -16,6 +16,10 @@ static int isLettras(char*pBuffer);
 //static int isValidSueldo(char* sueldo);
 //static int isValidHorasTrabajadas(char* horasTrabajadas);
 
+/** \brief crea un nuevo puntero del tipo empleado de manera dinamica
+ * \return puntero nuevo o null si no se pudo crear
+ */
+
 Employee* employee_new(void)
 {
     Employee* this;
@@ -23,6 +27,9 @@ Employee* employee_new(void)
     return this;
 }
 
+/** \brief libera puntero del tipo empleado de manera dinamica
+ * \param this Employee* Puntero a la estructura a borrar
+ */
 int employee_delete(Employee* this)
 {
     int retorno=-1;
@@ -33,6 +40,15 @@ int employee_delete(Employee* this)
     }
     return retorno;
 }
+
+/** \brief crea un nuevo puntero del tipo empleado de manera dinamica y guarda los datos
+            en cada uno de sus campos despues de validarlos
+ * \param id char*
+ * \param nombre char*
+ * \param horastrabajadas char*
+ * \param sueldo char*
+ * \return puntero nuevo o null si no se pudo crear
+ */
 
 Employee* employee_newParametros(char* id,char* nombre,char* horasTrabajadas,char* sueldo)
 {
@@ -74,6 +90,12 @@ Employee* employee_newParametros(char* id,char* nombre,char* horasTrabajadas,cha
     return retorno;
 }*/
 
+/** \brief Guarda el dato en el campo id, si ya tiene valor lo guarda asi y contabiliza el maximo
+            si se ingresa -1 genera uno nuevo apartir del mayor
+ * \param id int
+ * \return 0 todo bien 1 error
+ */
+
 int employee_setId(Employee* this,int id)
 {
     int retorno=-1;
@@ -98,6 +120,12 @@ int employee_setId(Employee* this,int id)
     return retorno;
 }
 
+/** \brief devuelve el dato en el campo id
+ * \param id int*
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
+
 int employee_getId(Employee* this,int* id)
 {
     int retorno=-1;
@@ -119,6 +147,12 @@ static int isValidId(int id)
     return retorno;
 }
 
+/** \brief guarda el dato en el campo nombre
+ * \param nombre char* nombre a guardar
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
+
 int employee_setNombre(Employee* this, char* nombre)
 {
     int retorno=-1;
@@ -130,6 +164,12 @@ int employee_setNombre(Employee* this, char* nombre)
     return retorno;
 }
 
+/** \brief devuelve el dato en el campo nombre
+ * \param nombre char*
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
+
 int employee_getNombre(Employee* this,char* nombre)
 {
     int retorno=-1;
@@ -140,6 +180,12 @@ int employee_getNombre(Employee* this,char* nombre)
     }
     return retorno;
 }
+
+/**
+ * \brief recibe una cadena de caracteres de un nombre para validar que solo sean letras
+ * \param nombre: cadena de caracteres a validar
+ * \return 0 OK, -1 error.
+*/
 
 static int isValidNombre(char* nombre)
 {
@@ -161,6 +207,12 @@ static int isValidNombre(char* nombre)
     return retorno;
 }*/
 
+/** \brief guarda el dato en el campo horasTrabajadas
+ * \param horasTrabajadas int horasTrabajadas a guardar
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
+
 int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
     int retorno=-1;
@@ -171,6 +223,12 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
     }
     return retorno;
 }
+
+/** \brief devuelve el dato en el campo horas
+ * \param horas int*
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
 
 int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 {
@@ -204,6 +262,12 @@ static int isValidHorasTrabajadas(int horas)
     return retorno;
 }*/
 
+/** \brief guarda el dato en el campo sueldo
+ * \param sueldo int sueldo a guardar
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien 1 error
+ */
+
 int employee_setSueldo(Employee* this,int sueldo)
 {
     int retorno=-1;
@@ -214,6 +278,12 @@ int employee_setSueldo(Employee* this,int sueldo)
     }
     return retorno;
 }
+
+/** \brief devuelve el dato en el campo sueldo
+ * \param sueldo int*
+ * \param this Employee* Puntero a la estructura Employee
+ * \return 0 todo bien -1 error
+ */
 
 int employee_getSueldo(Employee* this,int* sueldo)
 {
@@ -235,6 +305,12 @@ static int isValidSueldo(int sueldo)
     }
     return retorno;
 }
+
+/** \brief guarda los datos del LinkedList en la ruta del archivo recibido en modo texto
+ * \param pFile puntero al archivo
+ * \param pArrayListEmployee Puntero a la estructura Employee
+ * \return 0 todo bien -1 error
+ */
 
 int employee_guardarTexto(FILE* pFile,LinkedList* pArrayListEmployee)
 {
@@ -268,6 +344,12 @@ int employee_guardarTexto(FILE* pFile,LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+/** \brief guarda los datos del LinkedList en la ruta del archivo recibido en modo binario
+ * \param pFile puntero al archivo
+ * \param pArrayListEmployee Puntero a la estructura Employee
+ * \return 0 todo bien -1 error
+ */
+
 
 int employee_guardarBinario(FILE* pFile,LinkedList* pArrayListEmployee)
 {
@@ -294,6 +376,13 @@ int employee_guardarBinario(FILE* pFile,LinkedList* pArrayListEmployee)
     }
     return retorno;
 }
+
+/**
+ *  \brief utiliza el strcmp para comparar 2 nombres y retorna el valor del strcmp
+ *  \param thisA: dato uno a comparar
+ *  \param thisB: dato dos a comparar
+ *  \return retorno: valor del strcmp
+*/
 
 int employee_criterioNombre(void* thisA,void* thisB)
 {
