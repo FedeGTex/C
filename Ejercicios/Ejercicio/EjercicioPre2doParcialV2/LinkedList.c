@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../inc/LinkedList.h"
+#include "LinkedList.h"
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
@@ -635,7 +635,7 @@ static void* nextNodeIter(LinkedList* this)
  * \param pFunc* puntero a FUNCION
  * \return void
  */
-void mapeo(LinkedList* this,void(*pFunc)(void*))
+void ll_map(LinkedList* this,void(*pFunc)(void*))
 {
     Node* pNode;
     if(this!= NULL && pFunc != NULL)
@@ -682,7 +682,7 @@ void* ll_reduce(LinkedList* this,void(*pFunc)(void*))
  * \param pFunc* puntero a FUNCION
  * \return void* puntero a la nueva lista filtrada
  */
-void* filter(LinkedList* this,int(*pFunc)(void*))
+void* ll_filter(LinkedList* this,int(*pFunc)(void*))
 {
     Node* pNode;
     LinkedList* pLink=ll_newLinkedList();
