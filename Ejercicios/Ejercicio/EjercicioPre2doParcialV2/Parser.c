@@ -25,7 +25,7 @@ int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados)
             {
                 if(!flagOnce)
                 {
-                    fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                    fscanf(pFile,"%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas);
                     flagOnce=1;
                 }
                     fscanf(pFile,"%[^,],%[^,],%[^,],%[^ \n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
@@ -36,7 +36,7 @@ int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados)
                     }
                     else
                     {
-                        printf("%s,%s,%s,%s\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+                        printf("%s,%s,%s\n",bufferId,bufferNombre,bufferHorasTrabajadas);
                     }
             }while(!feof(pFile));
         }

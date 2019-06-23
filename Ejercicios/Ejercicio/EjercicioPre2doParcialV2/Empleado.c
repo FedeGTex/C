@@ -30,6 +30,21 @@ Empleado* Empleado_newConParametros(int id,char* nombre,int horasTrabajadas,int 
     Empleado_delete(this);
     return NULL;
 }
+/*
+Empleado* Empleado_newConParametros(int id,char* nombre,int horasTrabajadas)
+{
+    Empleado* this;
+    this=Empleado_new();
+
+    if(
+    !Empleado_setId(this,id)&&
+    !Empleado_setNombre(this,nombre)&&
+    !Empleado_setHorasTrabajadas(this,horasTrabajadas))
+        return this;
+
+    Empleado_delete(this);
+    return NULL;
+}*/
 
 int Empleado_setId(Empleado* this,int id)
 {
