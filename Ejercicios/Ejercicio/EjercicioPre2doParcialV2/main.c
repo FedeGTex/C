@@ -28,6 +28,7 @@ int main()
 {
     // Definir lista de empleados
     LinkedList* listaEmpleados;
+    listaEmpleados=ll_newLinkedList();
 
     // Crear lista empledos
     //...
@@ -56,5 +57,22 @@ int main()
 
 int generarArchivoSueldos(char* fileName,LinkedList* listaEmpleados)
 {
-    return 1;
+    int retorno=-1;
+    int i;
+    int limite;
+    FILE* pFile;
+    pFile=fopen(fileName,"w");
+    limite=ll_len(listaEmpleados);
+    Empleado* auxEmpleado;
+    if(pFile!=NULL)
+    {
+        retorno=0;
+        for(i=0;i<limite;i++)
+        {
+            auxEmpleado=ll_get(listaEmpleados,i);
+            fprintf(pFile,"%d,%s,%d,%d\n",auxEmpleado->id,auxEmpleado->nombre,auxEmpleado->horasTrabajadas,auxEmpleado->sueldo);
+        }
+    }
+    fclose(pFile);
+    return retorno;
 }

@@ -635,20 +635,30 @@ static void* nextNodeIter(LinkedList* this)
  * \param pFunc* puntero a FUNCION
  * \return void
  */
-void ll_map(LinkedList* this,void(*pFunc)(void*))
+int ll_map(LinkedList* this,int(*pFunc)(void*))
 {
     Node* pNode;
-    if(this!= NULL && pFunc != NULL)
+    void* pElement;
+    int returnAux=-1;
+    if(this != NULL && pFunc != NULL)
     {
-        pNode=startIter(this);
-        if(pNode!=NULL)
+        returnAux=0;
+        startIter(this);
+        do
         {
-            do{
-                pFunc(pNode->pElement);
-                pNode=nextNodeIter(this);
-            }while(pNode!=NULL);
-        }
+            pNode=nextNodeIter(this);
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            if(pFunc(pElement)==0)
+            {
+                returnAux=0;
+            }
+        }while(pNode!=NULL);
     }
+    return returnAux;
 }
 
 /*Achica la lista original segun el criterio

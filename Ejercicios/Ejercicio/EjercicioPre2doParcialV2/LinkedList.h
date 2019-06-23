@@ -59,4 +59,4 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 
 void* ll_filter(LinkedList* this,int(*pFunc)(void*));
 
-void ll_map(LinkedList* this,void(*pFunc)(void*));
+int ll_map(LinkedList* this,int(*pFunc)(void*));

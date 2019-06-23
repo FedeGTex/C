@@ -127,28 +127,23 @@ int Empleado_getSueldo(Empleado* this,int* sueldo)
     }
     return retorno;
 }
-void em_calcularSueldo(Empleado* Empleado)
+int em_calcularSueldo(void* p)
 {
-    int horas;
-    if(Empleado!=NULL)
+     int retorno=-1;
+    if(p != NULL && ((Empleado*)p)->horasTrabajadas < 120  )
     {
-        horas=Empleado->horasTrabajadas;
-        if(horas<120)
-        {
-            Empleado->sueldo=horas*180;
-        }
-        else if(horas<160)
-        {
-            Empleado->sueldo=120*180;
-            horas=horas-120;
-            Empleado->sueldo+=horas*240;
-        }
-        else
-        {
-            Empleado->sueldo=120*180;
-            Empleado->sueldo+=40*240;
-            horas=horas-160;
-            Empleado->sueldo+=horas*350;
-        }
+        ((Empleado*)p)->sueldo=180;
+        retorno=0;
     }
+    else if(p != NULL && ((Empleado*)p)->horasTrabajadas >= 120 && ((Empleado*)p)->horasTrabajadas < 160 )
+    {
+        ((Empleado*)p)->sueldo=240;
+        retorno=0;
+    }
+    else if(p != NULL && ((Empleado*)p)->horasTrabajadas >= 160 && ((Empleado*)p)->horasTrabajadas <= 240 )
+    {
+        ((Empleado*)p)->sueldo=350;
+        retorno=0;
+    }
+    return retorno;
 }

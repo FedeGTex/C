@@ -3,7 +3,7 @@
 
 #include "LinkedList.h"
 
-int parser_parseEmpleados(FILE* pFile, LinkedList* listaEmpleados);
+int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados);
 
 
 #endif // PARSER_H_INCLUDED
