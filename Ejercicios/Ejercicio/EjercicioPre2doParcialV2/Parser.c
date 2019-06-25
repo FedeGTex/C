@@ -12,7 +12,7 @@ int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados)
     char bufferId[1024];
     char bufferNombre[1024];
     char bufferHorasTrabajadas[1024];
-    char bufferSueldo[1024];
+    //char bufferSueldo[1024];
     int flagOnce=0;
     Empleado* auxEmpleado;
     if(fileName!=NULL && listaEmpleados!=NULL)
@@ -23,16 +23,18 @@ int parser_parseEmpleados(char* fileName, LinkedList* listaEmpleados)
         {
             do
             {
+                retorno=0;
                 if(!flagOnce)
                 {
                     fscanf(pFile,"%[^,],%[^,],%[^\n]\n",bufferId,bufferNombre,bufferHorasTrabajadas);
                     flagOnce=1;
                 }
-                    fscanf(pFile,"%[^,],%[^,],%[^,],%[^ \n]\n",bufferId,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
-                    auxEmpleado=Empleado_newConParametros(atoi(bufferId),bufferNombre,atoi(bufferHorasTrabajadas),atoi(bufferSueldo));
+                    fscanf(pFile,"%[^,],%[^,],%[^ \n]\n",bufferId,bufferNombre,bufferHorasTrabajadas);
+                    auxEmpleado=Empleado_newConParametros(atoi(bufferId),bufferNombre,atoi(bufferHorasTrabajadas),0);
                     if(auxEmpleado!=NULL)
                     {
                         ll_add(listaEmpleados,auxEmpleado);
+                        retorno=1;
                     }
                     else
                     {

@@ -643,10 +643,10 @@ int ll_map(LinkedList* this,int(*pFunc)(void*))
     if(this != NULL && pFunc != NULL)
     {
         returnAux=0;
-        startIter(this);
+        pNode=startIter(this);
         do
         {
-            pNode=nextNodeIter(this);
+
             if(pNode == NULL)
             {
                 break;
@@ -656,15 +656,17 @@ int ll_map(LinkedList* this,int(*pFunc)(void*))
             {
                 returnAux=0;
             }
+            pNode=nextNodeIter(this);
         }while(pNode!=NULL);
     }
     return returnAux;
 }
 
-/*Achica la lista original segun el criterio
-Hago remove del elemento
+/**@brief Achica la lista original segun el criterio
+*         remove del elemento
+**/
 
-void* ll_reduce(LinkedList* this,void(*pFunc)(void*))
+/*void* ll_reduce(LinkedList* this,void(*pFunc)(void*))
 {
     void* thisA;
     if(this!=NULL && pFunc!=NULL)

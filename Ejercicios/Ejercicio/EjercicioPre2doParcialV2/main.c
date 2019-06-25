@@ -66,7 +66,7 @@ int generarArchivoSueldos(char* fileName,LinkedList* listaEmpleados)
     Empleado* auxEmpleado;
     if(pFile!=NULL)
     {
-        retorno=0;
+        retorno=1;
         for(i=0;i<limite;i++)
         {
             auxEmpleado=ll_get(listaEmpleados,i);

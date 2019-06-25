@@ -147,17 +147,17 @@ int em_calcularSueldo(void* p)
      int retorno=-1;
     if(p != NULL && ((Empleado*)p)->horasTrabajadas < 120  )
     {
-        ((Empleado*)p)->sueldo=180;
+        ((Empleado*)p)->sueldo=180*((Empleado*)p)->horasTrabajadas;
         retorno=0;
     }
     else if(p != NULL && ((Empleado*)p)->horasTrabajadas >= 120 && ((Empleado*)p)->horasTrabajadas < 160 )
     {
-        ((Empleado*)p)->sueldo=240;
+        ((Empleado*)p)->sueldo=240*(((Empleado*)p)->horasTrabajadas-120)+21600;
         retorno=0;
     }
     else if(p != NULL && ((Empleado*)p)->horasTrabajadas >= 160 && ((Empleado*)p)->horasTrabajadas <= 240 )
     {
-        ((Empleado*)p)->sueldo=350;
+        ((Empleado*)p)->sueldo=350*(((Empleado*)p)->horasTrabajadas-160)+31200;
         retorno=0;
     }
     return retorno;
