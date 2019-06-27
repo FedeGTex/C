@@ -683,7 +683,32 @@ void* ll_reduce(LinkedList* this,int(*pFunc)(void*))
                 //elemento=thisA->pElement;
                 if(pFunc(thisA->pElement))
                 {
-                   ll_remove(this,contador);
+                   ll_remove(this,contador);int ll_map(LinkedList* this,int(*pFunc)(void*))
+{
+    Node* pNode;
+    void* pElement;
+    int returnAux=-1;
+    if(this != NULL && pFunc != NULL)
+    {
+        returnAux=0;
+        pNode=startIter(this);
+        do
+        {
+
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            if(pFunc(pElement)==0)
+            {
+                returnAux=0;
+            }
+            pNode=nextNodeIter(this);
+        }while(pNode!=NULL);
+    }
+    return returnAux;
+}
                    contador--;
                 }
                 thisA=thisB;
@@ -725,4 +750,77 @@ void* ll_filter(LinkedList* this,int(*pFunc)(void*))
     }
     return pLink;
 }
+int ll_countInt(LinkedList* this,int(*pFunc)(void*))
+{
+    Node* pNode;
+    void* pElement;
+    int returnAux=-1;
+    if(this != NULL && pFunc != NULL)
+    {
+        returnAux=0;
+        pNode=startIter(this);
+        do
+        {
 
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            returnAux+=pFunc(pElement);
+
+            pNode=nextNodeIter(this);
+        }while(pNode!=NULL);
+    }
+    return returnAux;
+}
+float ll_countFloat(LinkedList* this,float(*pFunc)(void*))
+{
+    Node* pNode;
+    void* pElement;
+    float returnAux=0;
+    if(this != NULL && pFunc != NULL)
+    {
+        returnAux=0;
+        pNode=startIter(this);
+        do
+        {
+
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            returnAux+=pFunc(pElement);
+
+            pNode=nextNodeIter(this);
+        }while(pNode!=NULL);
+    }
+    return returnAux;
+}
+int ll_maxiOmin(LinkedList* this,int(*pFunc)(void*),int flag)
+{
+    Node* pNode;
+    void* pElement;
+    int valor;
+    int returnAux=-1;
+    if(this != NULL && pFunc != NULL)
+    {
+        pNode=startIter(this);
+        pElement=pNode->pElement;
+        returnAux = pFunc(pElement);
+        do
+        {
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            valor= pFunc(pElement);
+            if((returnAux > valor && flag)||(returnAux< valor && !flag))
+                returnAux =valor;
+            pNode=nextNodeIter(this);
+        }while(pNode!=NULL);
+    }
+    return returnAux;
+}

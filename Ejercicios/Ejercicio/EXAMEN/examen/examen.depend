@@ -43,3 +43,48 @@
 	<time.h>
 	"utn.h"
 
+1561668592 source:c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\entidad.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"entidad.h"
+	"utn.h"
+
+1561667601 c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\entidad.h
+
+1561667594 source:c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561667598 c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\linkedlist.h
+
+1561667600 source:c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"entidad.h"
+	"LinkedList.h"
+	"parser.h"
+
+1561667413 c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\utn.h
+
+1561667605 c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\parser.h
+	"LinkedList.h"
+
+1561667607 source:c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"entidad.h"
+
+1561667413 source:c:\users\fede\desktop\c\ejercicios\ejercicio\examen\examen\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+

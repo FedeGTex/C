@@ -27,5 +27,10 @@ int Entidad_getPeso(Entidad* this,float* peso);
 
 void Entidad_Mostrar(void* pEntidad);
 int Entidad_cantidadTotalDeEntregas(void* pElement);
-
+int Entidad_contarTipoEco(void* pEntidad);
+int Entidad_contarTipoExp(void* pEntidad);
+int Entidad_contarTipoStd(void* pEntidad);
+int Entidad_contarIntCantidad(void* pEntidad);
+int Entidad_contarIntCantidadBultos(void* pEntidad);
+float Entidad_contarFloatPeso(void* pEntidad);
 #endif // ENTIDAD_H_INCLUDED

@@ -57,8 +57,11 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 
 
 
-void* ll_filter(LinkedList* this,int(*pFunc)(void*));
+int ll_countInt(LinkedList* this,int(*pFunc)(void*));
+float ll_countFloat(LinkedList* this,float(*pFunc)(void*));
 
+void* ll_filter(LinkedList* this,int(*pFunc)(void*));
+int ll_maxiOmin(LinkedList* this,int(*pFunc)(void*),int flag);
 int ll_map(LinkedList* this,int(*pFunc)(void*));
 
 void* ll_reduce(LinkedList* this,int(*pFunc)(void*));

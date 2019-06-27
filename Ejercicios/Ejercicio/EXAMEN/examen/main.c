@@ -1,4 +1,4 @@
-#include <stdio_ext.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "utn.h"
@@ -80,17 +80,45 @@ int generarInforme(FILE* pFile,LinkedList* this)
 {
 
     int retorno=-1;
-    //int cantidadTotalDeEntregas;
-    //int cantidadDeEntregasPorTipo;
+    int cantidadTotalDeEntregas;
+    int cantidadBultos;
+    int cantidadStd;
+    int cantidadExp;
+    int cantidadEco;
+    int mayor;
+    int menor;
+    float promedio;
+    float promedioPeso;
+    float cantidadPeso;
     //int cantidadMaximaDeBultosEntregados;
     //int promedioDeBultosPorEntrega;
     //int pesoPromedioPorEntrega;
     if(pFile!=NULL && this!= NULL)
     {
-        //cantidadTotalDeEntregas=ll_map(this,Entidad_cantidadTotalDeEntregas);
+
         fprintf(pFile,"***************************\nInforme\n**************************\n");
-        //fprintf(pFile,"-Cantidad total de entregas: %d\n",cantidadTotalDeEntregas);
-        fprintf(pFile,"********************************");
+        cantidadEco=ll_countInt(this,Entidad_contarTipoEco);
+        cantidadExp=ll_countInt(this,Entidad_contarTipoExp);
+        cantidadStd=ll_countInt(this,Entidad_contarTipoStd);
+        cantidadTotalDeEntregas= ll_countInt(this,Entidad_contarIntCantidad);
+        fprintf(pFile,"-Cantidad total de entregas: %d\n",cantidadTotalDeEntregas);
+        fprintf(pFile,"********************************\n");
+        fprintf(pFile,"-Cantidad de ECO: %d\n",cantidadEco);
+        fprintf(pFile,"-Cantidad de STD: %d\n",cantidadStd);
+        fprintf(pFile,"-Cantidad de EXP: %d\n",cantidadExp);
+        fprintf(pFile,"********************************\n");
+        mayor= ll_maxiOmin(this,Entidad_contarIntCantidad,0);
+        menor= ll_maxiOmin(this,Entidad_contarIntCantidad,1);
+        fprintf(pFile,"-Cantidad menor es : %d\n",menor);
+        fprintf(pFile,"-Cantidad mayor es : %d\n",mayor);
+        cantidadBultos=ll_countInt(this,Entidad_contarIntCantidadBultos);
+        promedio=cantidadTotalDeEntregas/cantidadBultos;
+        fprintf(pFile,"-Promedio de bultos es : %.2f\n",promedio);
+        cantidadPeso=ll_countFloat(this,Entidad_contarFloatPeso);
+        promedioPeso=cantidadPeso/cantidadBultos;
+        fprintf(pFile,"-Peso promedio por entrega es : %.2f\n",promedioPeso);
+
+
         retorno=0;
   }
     return retorno;

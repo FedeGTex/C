@@ -1,7 +1,8 @@
-#include "entidad.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "entidad.h"
+#include "utn.h"
 
 
 Entidad* Entidad_new()
@@ -151,3 +152,112 @@ void Entidad_Mostrar(void* pEntidad)
         printf("%d -%s -%d-%.2f\n",bufferId,bufferTipo,bufferCantidad,bufferPeso);
     }
 }
+int Entidad_contarIntCantidad(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        retorno = 1;
+    }
+    return retorno;
+}
+
+int Entidad_contarIntCantidadBultos(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        retorno = 1;
+    }
+    return retorno;
+}
+
+float Entidad_contarFloatPeso(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        retorno = bufferPeso;
+    }
+    return retorno;
+}
+
+int Entidad_contarTipoStd(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        if(!strcmp(bufferTipo,"STD"))
+          retorno = bufferCantidad;
+    }
+    return retorno;
+}
+int Entidad_contarTipoExp(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        if(!strcmp(bufferTipo,"EXP"))
+          retorno = 1;
+    }
+    return retorno;
+}
+int Entidad_contarTipoEco(void* pEntidad)
+{
+    int retorno=0;
+    int bufferId;
+    char bufferTipo[50];
+    int bufferCantidad;
+    float bufferPeso;
+    if(pEntidad!=NULL)
+    {
+        Entidad_getId(pEntidad,&bufferId);
+        Entidad_getTipo(pEntidad,bufferTipo);
+        Entidad_getCantidad(pEntidad,&bufferCantidad);
+        Entidad_getPeso(pEntidad,&bufferPeso);
+        if(!strcmp(bufferTipo,"ECO"))
+          retorno = bufferCantidad;
+    }
+    return retorno;
+}
+
