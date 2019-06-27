@@ -688,8 +688,10 @@ void* ll_reduce(LinkedList* this,int(*pFunc)(void*))
                 }
                 thisA=thisB;
                 if(thisB!=NULL)
+                {
                    thisB=thisB->pNextNode;
                    contador++;
+                }
              }while(thisA!=NULL);
         }
     }

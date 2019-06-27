@@ -1,0 +1,11 @@
+int controller_loadFromText(char* path , LinkedList* this);
+int controller_lastIdEntregas(LinkedList* this);
+int controller_searchEntregasById(LinkedList* this,int id,int* index);
+int controller_addEntregas(LinkedList* this);
+int controller_editEntregas(LinkedList* this);
+int controller_removeEntregas(LinkedList* this);
+int controller_ListEntregas(LinkedList* this);
+int controller_PrintEntregas(LinkedList* this, int index);
+int controller_PrintEntregasWithFields(LinkedList* this, int index);
+int controller_sortEntregas(LinkedList* this);
+int controller_saveAsText(char* path , LinkedList* this);

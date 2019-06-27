@@ -1,0 +1,56 @@
+# depslib dependency file v1.0
+1561590079 source:/home/alumno/matias/examen/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<limits.h>
+	<string.h>
+	"LinkedList.h"
+	"entregas.h"
+	"parser.h"
+	"utn.h"
+	"Controller.h"
+
+1561584762 /home/alumno/matias/examen/LinkedList.h
+
+1561586580 /home/alumno/matias/examen/entregas.h
+
+1561585831 /home/alumno/matias/examen/parser.h
+
+1561584762 /home/alumno/matias/examen/utn.h
+
+1561586342 /home/alumno/matias/examen/Controller.h
+
+1561586000 source:/home/alumno/matias/examen/entregas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"entregas.h"
+
+1561585967 source:/home/alumno/matias/examen/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561589764 source:/home/alumno/matias/examen/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"entregas.h"
+	"utn.h"
+
+1561587635 source:/home/alumno/matias/examen/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"entregas.h"
+
+1561584762 source:/home/alumno/matias/examen/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+

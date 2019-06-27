@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1561590591 source:/home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/entidad.c
+	"entidad.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1561589722 /home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/entidad.h
+
+1561588153 source:/home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561584991 /home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/LinkedList.h
+
+1561591628 source:/home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"entidad.h"
+	"LinkedList.h"
+	"parser.h"
+
+1561584880 /home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/utn.h
+
+1561586715 /home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/parser.h
+	"LinkedList.h"
+
+1561588088 source:/home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"entidad.h"
+
+1561584880 source:/home/alumno/Escritorio/C/primerParcial/EXAMEN/examen/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+

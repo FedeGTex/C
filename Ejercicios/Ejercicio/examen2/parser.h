@@ -1,0 +1,1 @@
+int parser_EntregasFromText(FILE* pFile , LinkedList* this);
