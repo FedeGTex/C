@@ -1,0 +1,63 @@
+# depslib dependency file v1.0
+1561671709 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/informes.c
+	"informes.h"
+	"Ventas.h"
+	<stdio_ext.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1561671699 /home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/informes.h
+	"LinkedList.h"
+
+1561678289 /home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/LinkedList.h
+
+1561677766 /home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/Ventas.h
+	"LinkedList.h"
+
+1561678842 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561672387 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/main.c
+	<stdio_ext.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+	"informes.h"
+
+1561669416 /home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/utn.h
+
+1561672618 /home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/parser.h
+	"LinkedList.h"
+
+1561673413 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/parser.c
+	<stdio_ext.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1561669416 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
+1561678691 source:/home/alumno/Documentos/C/primerParcial/Parcial2/parcial2/Ventas.c
+	<stdio_ext.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
