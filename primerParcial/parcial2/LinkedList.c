@@ -727,23 +727,29 @@ void* ll_filter(LinkedList* this,int(*pFunc)(void*))
     return pLink;
 }
 
-int ll_countInt(LinkedList* lista,int (*fn)(void* element))
+int ll_countInt(LinkedList* this,int(*pFunc)(void*))
 {
+    Node* pNode;
     void* pElement;
-    int i;
-    int size=ll_len(lista);
-    int cantidadAContar;
-    int total=0;
-    if(lista != NULL && fn != NULL)
+    int returnAux=0;
+    if(this != NULL && pFunc != NULL)
     {
-        for(i=0;i<size;i++)
+        returnAux=0;
+        pNode=startIter(this);
+        do
         {
-            pElement=ll_get(lista,i);
-            cantidadAContar=fn(pElement);
-            total=total + cantidadAContar;
-        }
+
+            if(pNode == NULL)
+            {
+                break;
+            }
+            pElement=pNode->pElement;
+            returnAux+=pFunc(pElement);
+
+            pNode=nextNodeIter(this);
+        }while(pNode!=NULL);
     }
-    return total;
+    return returnAux;
 }
 float ll_countFloat(LinkedList* this,float(*pFunc)(void*))
 {

@@ -3,6 +3,6 @@
 
 #include "LinkedList.h"
 
-int parser_parseVentas(char* fileName, LinkedList* lista);
+int parser_VentasFromText(FILE* pFile , LinkedList* this);
 
 #endif // PARSER_H_INCLUDED

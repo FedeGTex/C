@@ -1,6 +1,7 @@
 #include "informes.h"
 #include "Ventas.h"
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include "LinkedList.h"
 

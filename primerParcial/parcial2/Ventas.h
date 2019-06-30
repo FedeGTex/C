@@ -11,29 +11,28 @@ typedef struct{
     char cuitCliente[2000];
 }Venta;
 
-Venta* venta_new();
-void venta_delete(Venta* this);
+Venta* Ventas_new();
+void Ventas_delete();
+Venta* Ventas_newConParametros(int idVenta,char*fechaVenta,char* codigoProducto,int cantidad,float precioUnitario,char*cuitCliente);
 
-Venta* venta_newConParametros( char* idVenta,char* fechaVenta,
-                                char* tipoFoto,char* cantidad,char* precioUnitario,char* cuitCliente);
+int Ventas_setId_Venta(Venta* this,int idVenta);
+int Ventas_getId_Venta(Venta* this,int* idVenta);
 
-int venta_setIdVenta(Venta* this,char* idVenta);
-int venta_getIdVenta(Venta* this,int* idVenta);
+int Ventas_setFecha_Venta(Venta* this,char*fechaVenta);
+int Ventas_getFecha_Venta(Venta* this,char* fechaVenta);
 
-int venta_setFechaVenta(Venta* this,char* fechaVenta);
-int venta_getFechaVenta(Venta* this,char* fechaVenta);
+int Ventas_setTipoFoto(Venta* this,char* tipoFoto);
+int Ventas_getTipoFoto(Venta* this,char* tipoFoto);
 
-int venta_setTipoFoto(Venta* this,char* tipoFoto);
-int venta_getTipoFoto(Venta* this,char* tipoFoto);
+int Ventas_setCantidad(Venta* this,int cantidad);
+int Ventas_getCantidad(Venta* this,int* cantidad);
 
-int venta_setPrecioUnitario(Venta* this,char* precioUnitario);
-int venta_getPrecioUnitario(Venta* this,float* precioUnitario);
+int Ventas_setPrecio_Unitario(Venta* this,float precioUnitario);
+int Ventas_getPrecio_Unitario(Venta* this,float* precioUnitario);
 
-int venta_setCantidad(Venta* this,char* cantidad);
-int venta_getCantidad(Venta* this,int* cantidad);
+int Ventas_setCuit_Cliente(Venta* this,char* cuitCliente);
+int Ventas_getCuit_Cliente(Venta* this,char* cuitCliente);
 
-int venta_setCuitCliente(Venta* this,char* cuitCliente);
-int venta_getCuitCliente(Venta* this,char* cuitCliente);
 
 
 int venta_buscarPorId(LinkedList* listaVentas, int idVenta);

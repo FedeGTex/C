@@ -1,63 +1,61 @@
-#include <stdio_ext.h>
+#include <stdio.h>
+//#include <stdio_ext.h>
 #include <stdlib.h>
 #include "Ventas.h"
 #include <string.h>
 #include <ctype.h>
 #include "LinkedList.h"
 #include "utn.h"
-static int isValidId(char* employeeId);
-static int isValidPrecioUnitario(char* precioUnitario);
-static int isValidCantidad(char* precioUnitario);
-static int isValidFecha(char* fecha);
-static int isValidTipoFoto(char* tipoFoto);
-static int isValidCuitCliente(char* cuitCliente);
+//static int isValidId(char* employeeId);
+//static int isValidPrecioUnitario(char* precioUnitario);
+//static int isValidCantidad(char* precioUnitario);
+//static int isValidFecha(char* fecha);
+//static int isValidTipoFoto(char* tipoFoto);
+//static int isValidCuitCliente(char* cuitCliente);
 
 
-Venta* venta_new()
+Venta* Ventas_new()
 {
     Venta* this;
     this=malloc(sizeof(Venta));
     return this;
 }
 
-void venta_delete(Venta* this)
+void Ventas_delete(Venta* this)
 {
     free(this);
 }
 
-Venta* venta_newConParametros(char* idVenta,char* fechaVenta,char* tipoFoto,char* cantidad,char* precioUnitario,char* cuitCliente)
+Venta* Ventas_newConParametros(int idVenta,char*fechaVenta,char* tipoFoto,int cantidad,float precioUnitario,char*cuitCliente)
 {
-    Venta* p;
-    p=venta_new();
-    if(p!=NULL)
-    {
-        if( venta_setIdVenta(p,idVenta)==-1 ||
-            venta_setFechaVenta(p,fechaVenta)==-1 ||
-            venta_setTipoFoto(p,tipoFoto)==-1 ||
-            venta_setPrecioUnitario(p,precioUnitario) == -1 ||
-            venta_setCantidad(p,cantidad)==-1 ||
-            venta_setCuitCliente(p,cuitCliente)== -1)
-        {
-            venta_delete(p);
-            p=NULL;
-        }
-    }
-    return p;
+    Venta* this;
+    this=Ventas_new();
+
+    if(
+    !Ventas_setId_Venta(this,idVenta)&&
+    !Ventas_setFecha_Venta(this,fechaVenta)&&
+    !Ventas_setTipoFoto(this,tipoFoto)&&
+    !Ventas_setCantidad(this,cantidad)&&
+    !Ventas_setPrecio_Unitario(this,precioUnitario)&&
+    !Ventas_setCuit_Cliente(this,cuitCliente))
+        return this;
+
+    Ventas_delete(this);
     return NULL;
 }
 
-int venta_setIdVenta(Venta* this,char* idVenta)
+int Ventas_setId_Venta(Venta* this,int idVenta)
 {
     int retorno=-1;
-    if(this!=NULL && isValidId(idVenta)==0)
+    if(this!=NULL)
     {
-        this->idVenta=atoi(idVenta);
+        this->idVenta=idVenta;
         retorno=0;
     }
     return retorno;
 }
 
-int venta_getIdVenta(Venta* this,int* idVenta)
+int Ventas_getId_Venta(Venta* this,int* idVenta)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -68,26 +66,10 @@ int venta_getIdVenta(Venta* this,int* idVenta)
     return retorno;
 }
 
-static int isValidId(char* idVenta)
-{
-    int i=0;
-    int retorno=0;
-    while(idVenta[i] != '\0')
-    {
-        if(idVenta[i] < '0' || idVenta[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
-    }
-    return retorno;
-}
-
-int venta_setFechaVenta(Venta* this,char* fechaVenta)
+int Ventas_setFecha_Venta(Venta* this,char*fechaVenta)
 {
     int retorno=-1;
-    if(this!=NULL && fechaVenta!=NULL && isValidFecha(fechaVenta)==0)
+    if(this!=NULL)
     {
         strcpy(this->fechaVenta,fechaVenta);
         retorno=0;
@@ -95,10 +77,10 @@ int venta_setFechaVenta(Venta* this,char* fechaVenta)
     return retorno;
 }
 
-int venta_getFechaVenta(Venta* this,char* fechaVenta)
+int Ventas_getFecha_Venta(Venta* this,char* fechaVenta)
 {
     int retorno=-1;
-    if(this!=NULL && fechaVenta!=NULL)
+    if(this!=NULL)
     {
         strcpy(fechaVenta,this->fechaVenta);
         retorno=0;
@@ -106,31 +88,10 @@ int venta_getFechaVenta(Venta* this,char* fechaVenta)
     return retorno;
 }
 
-static int isValidFecha(char* fecha)
-{
-    int i=0;
-    int retorno=0;
-    int contadorBarras=0;
-    while(fecha[i] != '\0')
-    {
-        if(fecha[i]=='/' && contadorBarras<2)
-        {
-            contadorBarras++;
-        }
-        else if (fecha[i] < '0' || fecha[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
-    }
-    return retorno;
-}
-
-int venta_setTipoFoto(Venta* this,char* tipoFoto)
+int Ventas_setTipoFoto(Venta* this,char*tipoFoto)
 {
     int retorno=-1;
-    if(this!=NULL && tipoFoto!=NULL && isValidTipoFoto(tipoFoto)==0)
+    if(this!=NULL)
     {
         strcpy(this->tipoFoto,tipoFoto);
         retorno=0;
@@ -138,10 +99,10 @@ int venta_setTipoFoto(Venta* this,char* tipoFoto)
     return retorno;
 }
 
-int venta_getTipoFoto(Venta* this,char* tipoFoto)
+int Ventas_getTipoFoto(Venta* this,char* tipoFoto)
 {
     int retorno=-1;
-    if(this!=NULL && tipoFoto!=NULL)
+    if(this!=NULL)
     {
         strcpy(tipoFoto,this->tipoFoto);
         retorno=0;
@@ -149,85 +110,18 @@ int venta_getTipoFoto(Venta* this,char* tipoFoto)
     return retorno;
 }
 
-static int isValidTipoFoto(char* tipoFoto)
-{
-    int i=0;
-    int retorno=0;
-    int contadorGuiones=0;
-    while(tipoFoto[i] != '\0')
-    {
-        if(tipoFoto[i]=='_' &&tipoFoto==0)
-        {
-            contadorGuiones++;
-        }
-        else if (tipoFoto[i] < 'A' || tipoFoto[i] > 'Z')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
-    }
-
-    return retorno;
-}
-
-int venta_setPrecioUnitario(Venta* this,char* precioUnitario)
+int Ventas_setCantidad(Venta* this,int cantidad)
 {
     int retorno=-1;
-    if(this != NULL && isValidPrecioUnitario(precioUnitario)==0)
+    if(this!=NULL)
     {
-        this->precioUnitario=atof(precioUnitario);
+        this->cantidad=cantidad;
         retorno=0;
     }
     return retorno;
 }
 
-int venta_getPrecioUnitario(Venta* this,float* precioUnitario)
-{
-    int retorno=-1;
-    if(this!=NULL && precioUnitario != NULL)
-    {
-        *precioUnitario=this->precioUnitario;
-        retorno=0;
-    }
-    return retorno;
-}
-
-static int isValidPrecioUnitario(char* precioUnitario)
-{
-    int i=0;
-    int retorno=0;
-    int contadorDePuntos=0;
-    while(precioUnitario[i] != '\0')
-    {
-        if(precioUnitario[i] == '.' && contadorDePuntos==0)
-        {
-            contadorDePuntos++;
-            i++;
-            continue;
-        }
-        if(precioUnitario[i] < '0' || precioUnitario[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
-    }
-    return retorno;
-}
-
-int venta_setCantidad(Venta* this,char* cantidad)
-{
-    int retorno=-1;
-    if(this!=NULL && isValidCantidad(cantidad)==0)
-    {
-        this->cantidad=atoi(cantidad);
-        retorno=0;
-    }
-    return retorno;
-}
-
-int venta_getCantidad(Venta* this,int* cantidad)
+int Ventas_getCantidad(Venta* this,int* cantidad)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -238,26 +132,32 @@ int venta_getCantidad(Venta* this,int* cantidad)
     return retorno;
 }
 
-static int isValidCantidad(char* cantidad)
+int Ventas_setPrecio_Unitario(Venta* this,float precioUnitario)
 {
-    int i=0;
-    int retorno=0;
-    while(cantidad[i] != '\0')
+    int retorno=-1;
+    if(this!=NULL)
     {
-        if(cantidad[i] < '0' || cantidad[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+        this->precioUnitario=precioUnitario;
+        retorno=0;
     }
     return retorno;
 }
 
-int venta_setCuitCliente(Venta* this,char* cuitCliente)
+int Ventas_getPrecio_Unitario(Venta* this,float* precioUnitario)
 {
     int retorno=-1;
-    if(this!=NULL && cuitCliente!=NULL && isValidCuitCliente(cuitCliente)==0)
+    if(this!=NULL)
+    {
+        *precioUnitario=this->precioUnitario;
+        retorno=0;
+    }
+    return retorno;
+}
+
+int Ventas_setCuit_Cliente(Venta* this,char* cuitCliente)
+{
+    int retorno=-1;
+    if(this!=NULL)
     {
         strcpy(this->cuitCliente,cuitCliente);
         retorno=0;
@@ -265,114 +165,76 @@ int venta_setCuitCliente(Venta* this,char* cuitCliente)
     return retorno;
 }
 
-int venta_getCuitCliente(Venta* this,char* cuitCliente)
+int Ventas_getCuit_Cliente(Venta* this,char* cuitCliente)
 {
     int retorno=-1;
-    if(this!=NULL && cuitCliente!=NULL)
+    if(this!=NULL)
     {
         strcpy(cuitCliente,this->cuitCliente);
         retorno=0;
     }
     return retorno;
 }
-
-static int isValidCuitCliente(char* cuitCliente)
-{
-    int i=0;
-    int retorno=0;
-    int contadorGuiones=0;
-    while(cuitCliente[i] != '\0')
-    {
-        if(cuitCliente[i]=='-' && contadorGuiones<2)
-        {
-            contadorGuiones++;
-        }
-        else if (cuitCliente[i] < '0' || cuitCliente[i] > '9')
-        {
-            retorno=-1;
-            break;
-        }
-        i++;
+void Ventas_Mostrar(void* pVenta){
+    int bufferId;
+    char bufferFecha[50];
+    char bufferCodigo[50];
+    int bufferCantidad;
+    float bufferPrecio;
+    char bufferCuit[50];
+    if(pVenta!=NULL){
+        Ventas_getId_Venta(pVenta,&bufferId);
+        Ventas_getCantidad(pVenta,&bufferCantidad);
+        Ventas_getTipoFoto(pVenta,bufferCodigo);
+        Ventas_getCuit_Cliente(pVenta,bufferCuit);
+        Ventas_getFecha_Venta(pVenta,bufferFecha);
+        Ventas_getPrecio_Unitario(pVenta,&bufferPrecio);
+        printf("%d -%s - %s -%d-%.2f-%s\n",bufferId,bufferFecha,bufferCodigo,bufferCantidad,bufferPrecio,bufferCuit);
     }
-
-    return retorno;
-}
-
-int venta_buscarPorId(LinkedList* listaVentas, int idVenta)
-{
-    int retorno=-1;
-    int i;
-    Venta* auxVenta;
-    int size=ll_len(listaVentas);
-    if(listaVentas!=NULL)
-    {
-        for(i=0;i<size;i++)
-        {
-            auxVenta=ll_get(listaVentas,i);
-            if(auxVenta!=NULL && auxVenta->idVenta== idVenta)
-            {
-                retorno=i;
-                break;
-            }
-        }
-    }
-    return retorno;
 }
 
 int venta_cantidadAContarTotal(void* pElement)
 {
-    int retorno=0;
-    int bufferId;
-    char bufferFechaVenta[2000];
-    char bufferTipoFoto[2000];
-    float bufferPrecioUnitario;
-    int bufferCantidad;
-    char bufferCuitCliente[2000];
+    int retorno;
     if(pElement!=NULL)
     {
-        venta_getIdVenta(pElement,&bufferId);
-        venta_getFechaVenta(pElement,bufferFechaVenta);
-        venta_getTipoFoto(pElement,bufferTipoFoto);
-        venta_getPrecioUnitario(pElement,&bufferPrecioUnitario);
-        venta_getCantidad(pElement,&bufferCantidad);
-        venta_getCuitCliente(pElement,bufferCuitCliente);
-        retorno = bufferCantidad;
-        printf("sadsads");
-
+        Ventas_getCantidad(pElement,&retorno);
     }
     return retorno;
 }
 
 int venta_cantidadAContarMayor150(void* pElement)
 {
-    int retorno=0;
+    int retorno;
     float total;
-    if(pElement != NULL)
+    if(pElement!=NULL)
     {
         total=((Venta*)pElement)->cantidad * ((Venta*)pElement)->precioUnitario;
-        if(total > 150)
+        if(total>150)
         {
             retorno=1;
-        }
+        }else
+            retorno=0;
     }
     return retorno;
 }
 
 int venta_cantidadAContarMayor300(void* pElement)
 {
-    int retorno=0;
+    int retorno;
     float total;
     int cantidad;
     float precioUnitario;
-    if(pElement != NULL)
+    if(pElement!=NULL)
     {
-        venta_getCantidad(pElement,&cantidad);
-        venta_getPrecioUnitario(pElement,&precioUnitario);
-        total=cantidad * precioUnitario;
-        if(total > 300)
+        cantidad=((Venta*)pElement)->cantidad;
+        precioUnitario=((Venta*)pElement)->precioUnitario;
+        total=cantidad*precioUnitario;
+        if(total>300)
         {
             retorno=1;
-        }
+        }else
+            retorno=0;
     }
     return retorno;
 }
@@ -382,24 +244,17 @@ int venta_cantidadAContarMayor300(void* pElement)
 int venta_cantidadPolaroid(void* pElement)
 {
     int retorno=0;
-    int bufferId;
-    char bufferFechaVenta[2000];
-    char bufferTipoFoto[2000];
-    float bufferPrecioUnitario;
-    int bufferCantidad;
-    char bufferCuitCliente[2000];
+    char aux[1024];
     if(pElement!=NULL)
     {
-        venta_getIdVenta(pElement,&bufferId);
-        venta_getFechaVenta(pElement,bufferFechaVenta);
-        venta_getTipoFoto(pElement,bufferTipoFoto);
-        venta_getPrecioUnitario(pElement,&bufferPrecioUnitario);
-        venta_getCantidad(pElement,&bufferCantidad);
-        venta_getCuitCliente(pElement,bufferCuitCliente);
-        if((!strcmp(bufferTipoFoto,"POLAROID_11x9")) && (!strcmp(bufferTipoFoto,"POLAROID_10x10")))
-          retorno = bufferCantidad;
+        Ventas_getTipoFoto(pElement,aux);
+        if((strcmp(aux,"POLAROID_11x9")==0) && (!strcmp(aux,"POLAROID_10x10")==0))
+        {
+            retorno=1;
+        }
     }
     return retorno;
+
 }
 
 
@@ -417,7 +272,6 @@ int venta_generarArchivo(char* fileName,LinkedList* lista)
     {
         retorno=0;
         totalCantidad=ll_countInt(lista,venta_cantidadAContarTotal);
-
         MayoresCientoCincuenta=ll_countInt(lista,venta_cantidadAContarMayor150);
         MayoresTrescientos=ll_countInt(lista,venta_cantidadAContarMayor300);
         cantPola=ll_countInt(lista,venta_cantidadPolaroid);

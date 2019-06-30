@@ -61,3 +61,76 @@
 	"LinkedList.h"
 	"utn.h"
 
+1561839759 source:c:\users\peluche\desktop\c\primerparcial\parcial2\informes.c
+	"informes.h"
+	"Ventas.h"
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1561664650 c:\users\peluche\desktop\c\primerparcial\parcial2\informes.h
+	"LinkedList.h"
+
+1561664650 c:\users\peluche\desktop\c\primerparcial\parcial2\linkedlist.h
+
+1561934939 c:\users\peluche\desktop\c\primerparcial\parcial2\ventas.h
+	"LinkedList.h"
+
+1561839965 source:c:\users\peluche\desktop\c\primerparcial\parcial2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561843735 source:c:\users\peluche\desktop\c\primerparcial\parcial2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+	"informes.h"
+	"controller.h"
+
+1561664650 c:\users\peluche\desktop\c\primerparcial\parcial2\utn.h
+
+1561843457 c:\users\peluche\desktop\c\primerparcial\parcial2\parser.h
+	"LinkedList.h"
+
+1561843769 source:c:\users\peluche\desktop\c\primerparcial\parcial2\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1561664650 source:c:\users\peluche\desktop\c\primerparcial\parcial2\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
+1561935604 source:c:\users\peluche\desktop\c\primerparcial\parcial2\ventas.c
+	<stdio.h>
+	<stdlib.h>
+	"Ventas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1561843723 source:c:\users\peluche\desktop\c\primerparcial\parcial2\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+
+1561843681 c:\users\peluche\desktop\c\primerparcial\parcial2\controller.h
+
