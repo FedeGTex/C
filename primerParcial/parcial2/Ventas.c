@@ -12,6 +12,10 @@
 //static int isValidFecha(char* fecha);
 //static int isValidTipoFoto(char* tipoFoto);
 //static int isValidCuitCliente(char* cuitCliente);
+static int isValidInt(char* pBuffer);
+static int isValidFloat(char* pBuffer);
+static int isValidFecha(char* pBuffer);
+static int isValidCuit(char* pBuffer);
 
 
 Venta* Ventas_new()
@@ -26,31 +30,36 @@ void Ventas_delete(Venta* this)
     free(this);
 }
 
-Venta* Ventas_newConParametros(int idVenta,char*fechaVenta,char* tipoFoto,int cantidad,float precioUnitario,char*cuitCliente)
+Venta* Ventas_newConParametros(char*idVenta,char*fechaVenta,char*tipoFoto,char*cantidad,char*precioUnitario,char*cuitCliente)
 {
     Venta* this;
     this=Ventas_new();
 
     if(
-    !Ventas_setId_Venta(this,idVenta)&&
-    !Ventas_setFecha_Venta(this,fechaVenta)&&
-    !Ventas_setTipoFoto(this,tipoFoto)&&
-    !Ventas_setCantidad(this,cantidad)&&
-    !Ventas_setPrecio_Unitario(this,precioUnitario)&&
-    !Ventas_setCuit_Cliente(this,cuitCliente))
+        !Ventas_setId_Venta(this,idVenta)&&
+        !Ventas_setFecha_Venta(this,fechaVenta)&&
+        !Ventas_setTipoFoto(this,tipoFoto)&&
+        !Ventas_setCantidad(this,cantidad)&&
+        !Ventas_setPrecio_Unitario(this,precioUnitario)&&
+        !Ventas_setCuit_Cliente(this,cuitCliente))
         return this;
 
     Ventas_delete(this);
     return NULL;
 }
 
-int Ventas_setId_Venta(Venta* this,int idVenta)
+int Ventas_setId_Venta(Venta* this,char*idVenta)
 {
     int retorno=-1;
-    if(this!=NULL)
+    int id;
+    if(this!=NULL && !isValidInt(idVenta))
     {
-        this->idVenta=idVenta;
-        retorno=0;
+        id=atoi(idVenta);
+        if( id >=0)
+        {
+            this->idVenta=id;
+            retorno=0;
+        }
     }
     return retorno;
 }
@@ -69,7 +78,7 @@ int Ventas_getId_Venta(Venta* this,int* idVenta)
 int Ventas_setFecha_Venta(Venta* this,char*fechaVenta)
 {
     int retorno=-1;
-    if(this!=NULL)
+    if(this!=NULL && !isValidFecha(fechaVenta))
     {
         strcpy(this->fechaVenta,fechaVenta);
         retorno=0;
@@ -110,13 +119,18 @@ int Ventas_getTipoFoto(Venta* this,char* tipoFoto)
     return retorno;
 }
 
-int Ventas_setCantidad(Venta* this,int cantidad)
+int Ventas_setCantidad(Venta* this,char*cantidad)
 {
     int retorno=-1;
-    if(this!=NULL)
+    int cant;
+    if(this!=NULL && !isValidInt(cantidad))
     {
-        this->cantidad=cantidad;
-        retorno=0;
+        cant=atoi(cantidad);
+        if(cant>=0)
+        {
+            this->cantidad=cant;
+            retorno=0;
+        }
     }
     return retorno;
 }
@@ -132,13 +146,18 @@ int Ventas_getCantidad(Venta* this,int* cantidad)
     return retorno;
 }
 
-int Ventas_setPrecio_Unitario(Venta* this,float precioUnitario)
+int Ventas_setPrecio_Unitario(Venta* this,char*precioUnitario)
 {
     int retorno=-1;
-    if(this!=NULL)
+    float precio;
+    if(this!=NULL && !isValidFloat(precioUnitario))
     {
-        this->precioUnitario=precioUnitario;
-        retorno=0;
+        precio=atof(precioUnitario);
+        if(precio>0)
+        {
+            this->precioUnitario=precio;
+            retorno=0;
+        }
     }
     return retorno;
 }
@@ -157,7 +176,7 @@ int Ventas_getPrecio_Unitario(Venta* this,float* precioUnitario)
 int Ventas_setCuit_Cliente(Venta* this,char* cuitCliente)
 {
     int retorno=-1;
-    if(this!=NULL)
+    if(this!=NULL && !isValidCuit(cuitCliente))
     {
         strcpy(this->cuitCliente,cuitCliente);
         retorno=0;
@@ -175,22 +194,25 @@ int Ventas_getCuit_Cliente(Venta* this,char* cuitCliente)
     }
     return retorno;
 }
-void Ventas_Mostrar(void* pVenta){
+int Ventas_Mostrar(void* pVenta)
+{
     int bufferId;
     char bufferFecha[50];
     char bufferCodigo[50];
     int bufferCantidad;
     float bufferPrecio;
     char bufferCuit[50];
-    if(pVenta!=NULL){
+    if(pVenta!=NULL)
+    {
         Ventas_getId_Venta(pVenta,&bufferId);
         Ventas_getCantidad(pVenta,&bufferCantidad);
         Ventas_getTipoFoto(pVenta,bufferCodigo);
         Ventas_getCuit_Cliente(pVenta,bufferCuit);
         Ventas_getFecha_Venta(pVenta,bufferFecha);
         Ventas_getPrecio_Unitario(pVenta,&bufferPrecio);
-        printf("%d -%s - %s -%d-%.2f-%s\n",bufferId,bufferFecha,bufferCodigo,bufferCantidad,bufferPrecio,bufferCuit);
+        printf("%d - %s - %s - %d - %.2f - %s\n",bufferId,bufferFecha,bufferCodigo,bufferCantidad,bufferPrecio,bufferCuit);
     }
+    return 0;
 }
 
 int venta_cantidadAContarTotal(void* pElement)
@@ -206,14 +228,19 @@ int venta_cantidadAContarTotal(void* pElement)
 int venta_cantidadAContarMayor150(void* pElement)
 {
     int retorno;
+    int cantidad;
+    float precioUnitario;
     float total;
     if(pElement!=NULL)
     {
-        total=((Venta*)pElement)->cantidad * ((Venta*)pElement)->precioUnitario;
+        Ventas_getCantidad(pElement,&cantidad);
+        Ventas_getPrecio_Unitario(pElement,&precioUnitario);
+        total=cantidad * precioUnitario;
         if(total>150)
         {
             retorno=1;
-        }else
+        }
+        else
             retorno=0;
     }
     return retorno;
@@ -227,13 +254,14 @@ int venta_cantidadAContarMayor300(void* pElement)
     float precioUnitario;
     if(pElement!=NULL)
     {
-        cantidad=((Venta*)pElement)->cantidad;
-        precioUnitario=((Venta*)pElement)->precioUnitario;
-        total=cantidad*precioUnitario;
+        Ventas_getCantidad(pElement,&cantidad);
+        Ventas_getPrecio_Unitario(pElement,&precioUnitario);
+        total=cantidad * precioUnitario;
         if(total>300)
         {
             retorno=1;
-        }else
+        }
+        else
             retorno=0;
     }
     return retorno;
@@ -248,13 +276,12 @@ int venta_cantidadPolaroid(void* pElement)
     if(pElement!=NULL)
     {
         Ventas_getTipoFoto(pElement,aux);
-        if((strcmp(aux,"POLAROID_11x9")==0) && (!strcmp(aux,"POLAROID_10x10")==0))
+        if((!strcmp(aux,"POLAROID_11x9")) || (!strcmp(aux,"POLAROID_10x10")))
         {
             retorno=1;
         }
     }
     return retorno;
-
 }
 
 
@@ -267,7 +294,7 @@ int venta_generarArchivo(char* fileName,LinkedList* lista)
     int MayoresTrescientos;
     int cantPola;
     FILE* pFile;
-    pFile=fopen(fileName,"w");
+    pFile=fopen(fileName,"w+");
     if(pFile !=NULL)
     {
         retorno=0;
@@ -282,5 +309,103 @@ int venta_generarArchivo(char* fileName,LinkedList* lista)
 
     }
     fclose(pFile);
+    return retorno;
+}
+
+///retorno=0 esta ok retorno=1 esta mal
+
+static int isValidInt(char* pBuffer)
+{
+    int retorno=1;
+    int i;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<strlen(pBuffer); i++)
+        {
+            if(pBuffer[i]>'9' || pBuffer[i]<'0' )
+            {
+                break;
+            }
+        }
+    }
+    if( i == strlen(pBuffer))
+        retorno = 0;
+    return retorno;
+}
+
+
+static int isValidFloat(char* pBuffer)
+{
+    int retorno=1;
+    int i;
+    int flagPunto=0;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<strlen(pBuffer); i++)
+        {
+            if((pBuffer[i]=='.' || pBuffer[i]==',') && !flagPunto)
+            {
+                flagPunto=1;
+                continue;
+            }
+            if(pBuffer[i]>'9' || pBuffer[i]<'0')
+            {
+                break;
+            }
+        }
+    }
+    if( i == strlen(pBuffer))
+        retorno = 0;
+    return retorno;
+}
+
+static int isValidFecha(char* pBuffer)
+{
+    int retorno=1;
+    int i;
+    int flagCont=0;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<strlen(pBuffer); i++)
+        {
+            if(pBuffer[i]=='-' || pBuffer[i]=='/')
+            {
+                flagCont++;
+                continue;
+            }
+            if(pBuffer[i]>'9' || pBuffer[i]<'0')
+            {
+                break;
+            }
+        }
+    }
+    if(i==strlen(pBuffer) && flagCont==2)
+        retorno=0;
+    return retorno;
+}
+
+
+static int isValidCuit(char* pBuffer)
+{
+    int retorno=1;
+    int i;
+    int flagCont=0;
+    if(pBuffer!=NULL)
+    {
+        for(i=0; i<strlen(pBuffer); i++)
+        {
+            if(pBuffer[i]=='-')
+            {
+                flagCont++;
+                continue;
+            }
+            if(pBuffer[i]>'9' || pBuffer[i]<'0')
+            {
+                break;
+            }
+        }
+    }
+    if(i==strlen(pBuffer) && flagCont==2)
+        retorno=0;
     return retorno;
 }

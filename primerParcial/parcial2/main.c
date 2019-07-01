@@ -19,6 +19,7 @@ int main()
     if(controller_loadFromText("data.csv",listaVentas)==0)
     {
         printf("Ventas cargadas!\n");
+        ll_map(listaVentas,Ventas_Mostrar);
         if(informe_generarInforme("informes.csv",listaVentas)==0)
         {
             printf("Archivo de informes listo!\n");
@@ -26,8 +27,6 @@ int main()
     }
     else
         printf("Error leyendo compras\n");
-
-
-    return 0;
+ return 0;
 }
 

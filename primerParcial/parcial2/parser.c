@@ -32,10 +32,12 @@ int parser_VentasFromText(FILE* pFile , LinkedList* this)
                 fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",bufferId,bufferFecha,bufferTipoFoto,bufferCantidad,bufferPrecio,bufferCuit);
                 flagOnce=1;
             }
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,]%[^\n]\n",bufferId,bufferFecha,bufferTipoFoto,bufferCantidad,bufferPrecio,bufferCuit);
-            pVenta=Ventas_newConParametros(atoi(bufferId),bufferFecha,bufferTipoFoto,atoi(bufferCantidad),atof(bufferPrecio),bufferCuit);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",bufferId,bufferFecha,bufferTipoFoto,bufferCantidad,bufferPrecio,bufferCuit);
+            pVenta=Ventas_newConParametros(bufferId,bufferFecha,bufferTipoFoto,bufferCantidad,bufferPrecio,bufferCuit);
             if(pVenta!=NULL){
                 ll_add(this,pVenta);
+                //Ventas_Mostrar(pVenta);
+                //getchar();
             }else{
                 printf("%s,%s,%s,%s,%s,%s\n",bufferId,bufferFecha,bufferTipoFoto,bufferCantidad,bufferPrecio,bufferCuit);
                 getchar();
