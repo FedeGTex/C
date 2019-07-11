@@ -1,0 +1,76 @@
+# depslib dependency file v1.0
+1562882905 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+
+1562885210 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/LinkedList.h
+	<stdio.h>
+	<stdlib.h>
+
+1562880455 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/utn.h
+
+1562883151 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/parser.h
+	"LinkedList.h"
+
+1562884370 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/informes.c
+	"informes.h"
+	"Llamadas.h"
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1562884127 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/informes.h
+	"LinkedList.h"
+
+1562885654 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/Llamadas.h
+	"LinkedList.h"
+
+1562885212 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1562887003 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/Llamadas.c
+	<stdio.h>
+	<stdlib.h>
+	"Llamadas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1562886501 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Llamadas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+	"parser.h"
+	"informes.h"
+	"controller.h"
+
+1562880455 /home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/controller.h
+
+1562883302 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"Llamadas.h"
+	<string.h>
+	<ctype.h>
+	"LinkedList.h"
+	"utn.h"
+
+1562880455 source:/home/alumno/Documentos/C/primerParcial/Recu/Recuperatorio/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"utn.h"
+
